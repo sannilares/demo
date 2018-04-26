@@ -17,6 +17,8 @@ nav {
   padding: 15px;
   background-color: #ddc0a1;
   text-align:center;
+  position: fixed;
+  top: 0;
 }
 
 a {
