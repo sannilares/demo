@@ -12,6 +12,8 @@
     background-size: cover;
 }
 
+/* navin tyyli alkaa */
+
 nav {
   display: block;
   padding: 15px;
@@ -37,6 +39,8 @@ a {
 .thispage {
   background-color: #c3c388;
 }
+
+/* navin tyyli loppuu */
 
 footer {
   text-align: center;
