@@ -12,6 +12,15 @@
     background-size: cover;
 }
 
+.rullaava_kentta {
+  style="height:1000px;
+  width:80%;
+  position: center;
+  background-color:rgba(255, 255, 255, 0.3);
+  font-size:36px;
+  opacity: 0.5
+}
+
 /* navin tyyli alkaa */
 
 nav {
