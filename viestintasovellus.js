@@ -48,9 +48,10 @@ function haeViesti(int, callback) {
   xmlhttp.send();
 }
 
+
+
 // Tämä funktio lisää viestin firebaseen
 function lahetaLampoa(int) {
-
 
   function aikaJarjestus(x) {
     // Haetaan tämänhetkisen lämmön määrä
@@ -72,22 +73,41 @@ function lahetaLampoa(int) {
     xmlhttp.open("PUT", url, true);         //POST toiminee myös
     xmlhttp.send(uusLampo.toString());
     };
-    
+
     // Haetaan JSON:ista parametrin osoittama viesti ja käynnistetään funktio
     haeViesti(int, aikaJarjestus);
 
 }
 
 
+function lahetaViesti() {
+  
+  function aikaJarjestus(x) {
+    // Haetaan tämänhetkisen lämmön määrä
+    var lammonMaara = JSON.parse(x);
+    var xmlhttp = new XMLHttpRequest();
+    //Valitaan oikea url parametrin mukaisesti
+    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/lampo.json";
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        //viestiObjekti = JSON.parse(this.responseText);
+      }
+    };
 
+    //Suoritetaan pluslasku
+    var uusLampo = parseInt(lammonMaara.lampo) + 1
 
-// function lahetaViesti() {
-//   lista = haeJson;
-// }
+    //Lisätään lämpö firebaseen
+    xmlhttp.open("PUT", url, true);         //POST toiminee myös
+    xmlhttp.send(uusLampo.toString());
+    };
 
-// function lahetaLampoa() {
-//   lista = haeJson;
-// }
+    // Haetaan JSON:ista parametrin osoittama viesti ja käynnistetään funktio
+    haeViesti(int, aikaJarjestus);
+
+}
+
 
 function kommentoi() {
   lista = haeJson;
