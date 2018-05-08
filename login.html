@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset = "utf-8">
+    <link rel = "stylesheet" type = "text/css" href = "login.css">
+</head>
+
+<!-- Avaa kirjautumissivun -->
+<button onclick="document.getElementById('kirjautumissivu').style.display='block'">Kirjaudu sisään</button>
+
+<!-- Kirjautumissivu -->
+<div id="kirjautumissivu" class="moduuli">
+  <span onclick="document.getElementById('kirjautumissivu').style.display='none'"
+class="sulje" title="Sulje moduuli">&times;</span>
+
+  <!-- Kirjautumismoduuli -->
+  <form class="moduulin animaatio" action="/action_page.php">
+    <div class="kuva">
+      <img src="KUVA.png" alt="Kuva" class="kuva">
+    </div>
+
+    <div class="kirjautuminen">
+      <label for="käyttis"><b>Käyttäjänimi</b></label>
+      <input type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required>
+
+      <label for="salis"><b>Password</b></label>
+      <input type="Salasana" placeholder="Syötä salasanasi" name="salis" required>
+
+      <button type="syötä">Kirjaudu sisään</button>
+      <label>
+        <input type="checkbox" checked="checked" name="muista"> Muista minut
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button"
+              onclick="document.getElementById('kirjautumissivu').style.display='none'"
+              class="takaisin">Takaisin</button>
+      <span class="salis">Unohtuiko <a href="#">salasana?</a></span>
+    </div>
+  </form>
+</div>
+
+</html>
