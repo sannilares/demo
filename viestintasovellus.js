@@ -26,9 +26,6 @@ function haeJson() {
   xmlhttp.send();
 }
 
-
-
-
 // Tämä funktio hakee tietyn viesti-olion
 function haeViesti(int, callback) {
   var xmlhttp = new XMLHttpRequest();
@@ -52,7 +49,10 @@ function haeViesti(int, callback) {
 
 // Tämä funktio lisää viestin firebaseen
 function lahetaLampoa(int) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8c94c934a48b98fe59f87523bafef69018cf654b
   function aikaJarjestus(x) {
     // Haetaan tämänhetkisen lämmön määrä
     var lammonMaara = JSON.parse(x);
@@ -79,6 +79,7 @@ function lahetaLampoa(int) {
 
 }
 
+<<<<<<< HEAD
 
 function lahetaViesti() {
   
@@ -107,6 +108,11 @@ function lahetaViesti() {
     haeViesti(int, aikaJarjestus);
 
 }
+=======
+// function lahetaViesti() {
+//   lista = haeJson;
+// }
+>>>>>>> 8c94c934a48b98fe59f87523bafef69018cf654b
 
 
 function kommentoi() {
