@@ -30,15 +30,16 @@ function haeJson() {
 
 
 // Tämä funktio hakee tietyn viesti-olion
-function haeViesti(int) {
+function haeViesti(int, callback) {
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://maalampo-some-demo.firebaseio.com/" + int + ".json";
+  var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
+  console.log(url)
 
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
+      callback(this.responseText);
       console.log(this.responseText);
-      viestiObjekti = JSON.parse(this.responseText);
+      //viestiObjekti = JSON.parse(this.responseText);
     }
   };
 
@@ -48,25 +49,31 @@ function haeViesti(int) {
 
 // Tämä funktio lisää viestin firebaseen
 function lahetaLampoa(int) {
-  // Haetaan JSON:ista parametrin osoittama viesti
-  var x = haeViesti(int);
-  var xmlhttp = new XMLHttpRequest();
-  //Valitaan oikea url parametrin mukaisesti
-  var url = "https://maalampo-some-demo.firebaseio.com/" + "x" + ".json";
 
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
-      //viestiObjekti = JSON.parse(this.responseText);
-    }
-  };
 
-  //Suoritetaan pluslasku
-  var uusLampo = parseInt(x.lampo) + 1
+  function aikaJarjestus(x) {
+    var asd = JSON.parse(x);
+    var xmlhttp = new XMLHttpRequest({mozSystem: true});
+    //Valitaan oikea url parametrin mukaisesti
+    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/lampo.json";
 
-  //Lisätään lämpö firebaseen
-  xmlhttp.open("SEND", url, true);
-  xmlhttp.send(uusLampo.toString());            //xmlhttp.send(parseInt(uusLampo));
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        //viestiObjekti = JSON.parse(this.responseText);
+      }
+    };
+
+    //Suoritetaan pluslasku
+    var uusLampo = parseInt(asd.lampo) + 1
+
+    //Lisätään lämpö firebaseen
+    xmlhttp.open("SEND", url, true);
+    xmlhttp.send(uusLampo.toString());
+    };
+    // Haetaan JSON:ista parametrin osoittama viesti
+    haeViesti(int, aikaJarjestus);
+
 }
 
 
