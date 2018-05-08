@@ -53,7 +53,7 @@ function lahetaLampoa(int) {
 
   function aikaJarjestus(x) {
     var asd = JSON.parse(x);
-    var xmlhttp = new XMLHttpRequest({mozSystem: true});
+    var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url parametrin mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/lampo.json";
 
@@ -68,7 +68,7 @@ function lahetaLampoa(int) {
     var uusLampo = parseInt(asd.lampo) + 1
 
     //Lisätään lämpö firebaseen
-    xmlhttp.open("SEND", url, true);
+    xmlhttp.open("PUT", url, true);
     xmlhttp.send(uusLampo.toString());
     };
     // Haetaan JSON:ista parametrin osoittama viesti
