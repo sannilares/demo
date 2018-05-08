@@ -76,6 +76,10 @@ function lahetaLampoa(int) {
 
 }
 
+function luoViestiOlio(teksti, lahettaja) {
+
+}
+
 
 function lahetaViesti(viestiOlio) {
 
@@ -91,9 +95,9 @@ function lahetaViesti(viestiOlio) {
       }
     };
 
-    //Lisätään lämpö firebaseen
-    xmlhttp.open("PUT", url, true);         //POST toiminee myös
-    xmlhttp.send(uusLampo.toString());
+    //Lisätään viesti firebaseen
+    xmlhttp.open("SEND", url, true);
+    xmlhttp.send(viestiOlio);
 
 }
 
