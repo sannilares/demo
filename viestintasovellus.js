@@ -1,7 +1,7 @@
 
 haeJson();
 
-// Tämä funktio hakee viestit ???????ja starttaa karusellin????????
+// Tämä funktio hakee viestit
 function haeJson() {
   var xmlhttp = new XMLHttpRequest();
   var url = "https://maalampo-some-demo.firebaseio.com/.json";
@@ -12,7 +12,7 @@ function haeJson() {
       console.log(this.responseText);
       ????? = JSON.parse(this.responseText);
 
-      // Voidaan kutsua funktiota tässä hehheh
+      // Voidaan kutsua funktiota tässä
 
       // Ja päivitetään sivu ehkäpä?
 
