@@ -1,0 +1,66 @@
+.parallax {
+    /* The image used */
+    background-image: url("evi-radauscher.jpg");
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rullaava_kentta {
+  height:1000px;
+  width:80%;
+  position: center;
+  background-color:rgba(255, 255, 255, 0.8);
+  /* color: red; */
+  font-size:36px;
+  /* opacity: 0.5 */
+  /* position: absolute; */
+  /* right: 10%; */
+  /* marigin: 10% auto; */
+}
+
+/* navin tyyli alkaa */
+
+nav {
+  display: block;
+  padding: 15px;
+  background-color: #ddc0a1;
+  text-align:center;
+  position: fixed;
+  top: 0;
+}
+
+a {
+  display: inline;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Bellefair', serif;
+}
+
+.normal_link:hover {
+  background-color: #d0a77c;
+}
+
+.thispage {
+  background-color: #c3c388;
+}
+
+/* navin tyyli loppuu */
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  background-color: #55552b;
+  max-height: 265px;
+  clear: both;
+  font-family: 'Bellefair', serif;
+}
