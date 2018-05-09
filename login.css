@@ -1,9 +1,9 @@
-/* Bordered form */
+/* Kirjautumismoduulin lomake */
 form {
     border: 3px solid #f1f1f1;
 }
 
-/* Full-width inputs */
+/* Käyttäjänimen ja salasanan boksit */
 input[type=käyttäjänimi], input[type=salasana] {
     width: 100%;
     padding: 12px 20px;
@@ -13,9 +13,9 @@ input[type=käyttäjänimi], input[type=salasana] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
+/* nappien tyylit */
 button {
-    background-color: #4CAF50;
+    background-color: #ddc0a1;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -24,44 +24,43 @@ button {
     width: 100%;
 }
 
-/* Add a hover effect for buttons */
 button:hover {
     opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
+/* Takaisin-nappi */
 .takaisin {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #c3c388;
     margin-left: 10px;
 }
 
-/* Center the avatar image inside this container */
+/* sisäänkirjautumiskuvan tyyli */
 .kuva {
     text-align: center;
     margin: 24px 0 12px 0;
 }
 
-/* Avatar image */
+/* kuva */
 img.kuva {
     width: 40%;
     border-radius: 50%;
 }
 
-/* Add padding to containers */
+/* reunukset koko kirjautumissivulle */
 .kirjautuminen {
     padding: 16px;
 }
 
-/* The "Forgot password" text */
+/* Unohtuiko salasana -tyyli */
 span.salis {
     float: right;
     padding-top: 16px;
     padding-right: 10px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
+/* pienten ruutujen säädöt */
 @media screen and (max-width: 300px) {
     span.salis {
         display: block;
@@ -72,7 +71,7 @@ span.salis {
     }
 }
 
-/* The Modal (background) */
+/* moduulin tausta yms säädöt */
 .moduuli {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -95,7 +94,7 @@ span.salis {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
+/* Takaisin-nappula */
 .sulje {
     /* Position it in the top right corner outside of the modal */
     position: absolute;
@@ -106,14 +105,13 @@ span.salis {
     font-weight: bold;
 }
 
-/* Close button on hover */
 .sulje:hover,
 .sulje:focus {
     color: red;
     cursor: pointer;
 }
 
-/* Add Zoom Animation */
+/* animaatioefekti moduulin avautuessa */
 .animaatio {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
