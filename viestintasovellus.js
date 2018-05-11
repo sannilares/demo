@@ -1,8 +1,9 @@
 
 // Objekti johon viestit haetaan Firebasesta
-var viestiObjekti = 0;
+var viestiObjekti = "";
 
 var lista = haeJson();
+// lista = JSON.parse(haeJson());
 
 // Tämä funktio hakee viestit
 function haeJson() {
@@ -22,6 +23,7 @@ function haeJson() {
   };
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
+  return xmlhttp.responseText;
 }
 
 
@@ -65,7 +67,7 @@ function lahetaLampoa(int) {
     //Lisätään lämpö firebaseen
     xmlhttp.open("PUT", url, true);         //POST toiminee myös
     xmlhttp.send(uusLampo.toString());
-    lista = haeJson();
+    viestiObjekti = haeJson();
     };
     // Haetaan JSON:ista parametrin osoittama viesti ja käynnistetään funktio
     haeViesti(int, aikaJarjestus);
@@ -78,7 +80,7 @@ function lahetaLampoa(int) {
 
 
 function luoViestiOlio(teksti, lahettaja) {
-  var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), numero: 3, kommentit:[{}] };
+  var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), numero: viestiObjekti.length, kommentit:[{}] };
   return uusOlio;
 }
 
@@ -86,7 +88,7 @@ function luoViestiOlio(teksti, lahettaja) {
 // Tämä funktio lisää uuden viestiolion firebaseen
 function lahetaViesti(viestiOlio) {
     // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = 3;          //size???
+    var int = viestiObjekti.length;          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
@@ -97,9 +99,9 @@ function lahetaViesti(viestiOlio) {
       }
     };
     //Lisätään viesti firebaseen
-    xmlhttp.open("SEND", url, true);
+    xmlhttp.open("PUT", url, true);
     xmlhttp.send(viestiOlio);
-    lista = haeJson();
+    viestiObjekti = haeJson();
 }
 
 
@@ -123,4 +125,20 @@ function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
     //Lisätään viesti firebaseen
     xmlhttp.open("PUT", url, true);
     xmlhttp.send(kommenttiOlio[0]);
+}
+
+
+// Tämä funktio järjestää viestit väärinpäin olevan listan mukaisesti, ts. uusin ensin
+function jarjestaAjankohtaiset() {
+  return lista.reverse();
+}
+
+//Tämä funkio järjestää viestit lämmön määrän mukaisesti, isoin numero ensin
+function jarjestaSuosituin() {
+  lista
+}
+
+//Tämä funkio järjestää viestit kommenttien määrän mukaisesti, isoin numero ensin
+function jarjestaKeskustelu() {
+
 }
