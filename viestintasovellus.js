@@ -21,7 +21,6 @@ function haeJson() {
 
     }
   };
-
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }
@@ -77,7 +76,7 @@ function lahetaLampoa(int) {
 }
 
 var pekka = luoViestiOlio("Hei olen Pekka", "Pekka")
-console.log(lahetaViesti(pekka))
+lahetaViesti(pekka)
 
 
 function luoViestiOlio(teksti, lahettaja) {
@@ -89,7 +88,7 @@ function luoViestiOlio(teksti, lahettaja) {
 function lahetaViesti(viestiOlio) {
 
     // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = haeJson().length()          //size???
+    var int = haeJson()          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
