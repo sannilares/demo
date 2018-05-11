@@ -105,7 +105,25 @@ function lahetaViesti(viestiOlio) {
 
 }
 
+function luoKommenttiOlio(teksti, lahettaja) {
+  var uusOlio = {viesti: teksti, nimi: lahettaja, aika: new Date() };
+  return uusOlio;
+}
 
-function kommentoi() {
-  lista = haeJson;
+function kommentoi(kommenttiOlio, int) {
+
+    var xmlhttp = new XMLHttpRequest();
+    //Valitaan oikea url listan koon mukaisesti
+    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        //viestiObjekti = JSON.parse(this.responseText);
+      }
+    };
+
+    //Lisätään viesti firebaseen
+    xmlhttp.open("SEND", url, true);
+    xmlhttp.send(kommenttiOlio);
+
 }
