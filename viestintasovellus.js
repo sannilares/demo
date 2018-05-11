@@ -39,7 +39,6 @@ function haeViesti(int, callback) {
       //viestiObjekti = JSON.parse(this.responseText);
     }
   };
-
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }
@@ -61,24 +60,21 @@ function lahetaLampoa(int) {
         //viestiObjekti = JSON.parse(this.responseText);
       }
     };
-
     //Suoritetaan pluslasku
     var uusLampo = parseInt(lammonMaara.lampo) + 1
-
     //Lisätään lämpö firebaseen
     xmlhttp.open("PUT", url, true);         //POST toiminee myös
     xmlhttp.send(uusLampo.toString());
     lista = haeJson();
     };
-
     // Haetaan JSON:ista parametrin osoittama viesti ja käynnistetään funktio
     haeViesti(int, aikaJarjestus);
 }
 
 
 
-var pekka = luoViestiOlio("Hei olen Pekka", "Pekka")
-lahetaViesti(pekka)
+// var pekka = luoViestiOlio("Hei olen Pekka", "Pekka")
+// lahetaViesti(pekka)
 
 
 function luoViestiOlio(teksti, lahettaja) {
@@ -87,8 +83,8 @@ function luoViestiOlio(teksti, lahettaja) {
 }
 
 
+// Tämä funktio lisää uuden viestiolion firebaseen
 function lahetaViesti(viestiOlio) {
-
     // Mietitään mihin kohtaan listaa uusi olio lisätään
     var int = lista.size          //size???
     var xmlhttp = new XMLHttpRequest();
@@ -100,7 +96,6 @@ function lahetaViesti(viestiOlio) {
         //viestiObjekti = JSON.parse(this.responseText);
       }
     };
-
     //Lisätään viesti firebaseen
     xmlhttp.open("SEND", url, true);
     xmlhttp.send(viestiOlio);
@@ -114,8 +109,8 @@ function luoKommenttiOlio(teksti, lahettaja, mihinViestiin) {
   return [uusOlio, mihinViestiin.numero];
 }
 
+//Tämä funktio lisää kommentin valittuun viestiolioon
 function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
-
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/kommentit.json";
@@ -125,7 +120,6 @@ function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
         //viestiObjekti = JSON.parse(this.responseText);
       }
     };
-
     //Lisätään viesti firebaseen
     xmlhttp.open("SEND", url, true);
     xmlhttp.send(kommenttiOlio[0]);
