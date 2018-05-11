@@ -78,7 +78,7 @@ function lahetaLampoa(int) {
 
 
 function luoViestiOlio(teksti, lahettaja) {
-  var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), numero: lista.size, kommentit:[{}] };
+  var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), numero: 3, kommentit:[{}] };
   return uusOlio;
 }
 
@@ -86,7 +86,7 @@ function luoViestiOlio(teksti, lahettaja) {
 // Tämä funktio lisää uuden viestiolion firebaseen
 function lahetaViesti(viestiOlio) {
     // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = lista.size          //size???
+    var int = 3;          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
@@ -121,6 +121,6 @@ function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
       }
     };
     //Lisätään viesti firebaseen
-    xmlhttp.open("SEND", url, true);
+    xmlhttp.open("PUT", url, true);
     xmlhttp.send(kommenttiOlio[0]);
 }
