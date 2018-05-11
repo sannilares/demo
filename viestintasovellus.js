@@ -16,7 +16,6 @@ function haeJson() {
       viestiObjekti = JSON.parse(this.responseText);
 
       // Voidaan kutsua funktiota tässä
-
       // Ja päivitetään sivu ehkäpä?
 
     }
@@ -24,6 +23,7 @@ function haeJson() {
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 }
+
 
 // Tämä funktio hakee tietyn viesti-olion
 function haeViesti(int, callback) {
@@ -68,19 +68,21 @@ function lahetaLampoa(int) {
     //Lisätään lämpö firebaseen
     xmlhttp.open("PUT", url, true);         //POST toiminee myös
     xmlhttp.send(uusLampo.toString());
+    lista = haeJson();
     };
 
     // Haetaan JSON:ista parametrin osoittama viesti ja käynnistetään funktio
     haeViesti(int, aikaJarjestus);
-
 }
+
+
 
 var pekka = luoViestiOlio("Hei olen Pekka", "Pekka")
 lahetaViesti(pekka)
 
 
 function luoViestiOlio(teksti, lahettaja) {
-  var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), kommentit:[{}] };
+  var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), numero: lista.size, kommentit:[{}] };
   return uusOlio;
 }
 
@@ -88,7 +90,7 @@ function luoViestiOlio(teksti, lahettaja) {
 function lahetaViesti(viestiOlio) {
 
     // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = haeJson()          //size???
+    var int = lista.size          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
@@ -102,19 +104,21 @@ function lahetaViesti(viestiOlio) {
     //Lisätään viesti firebaseen
     xmlhttp.open("SEND", url, true);
     xmlhttp.send(viestiOlio);
-
+    lista = haeJson();
 }
 
-function luoKommenttiOlio(teksti, lahettaja) {
+
+
+function luoKommenttiOlio(teksti, lahettaja, mihinViestiin) {
   var uusOlio = {viesti: teksti, nimi: lahettaja, aika: new Date() };
-  return uusOlio;
+  return [uusOlio, mihinViestiin.numero];
 }
 
-function kommentoi(kommenttiOlio, int) {
+function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
 
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
-    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
+    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/kommentit.json";
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         console.log(this.responseText);
@@ -124,6 +128,5 @@ function kommentoi(kommenttiOlio, int) {
 
     //Lisätään viesti firebaseen
     xmlhttp.open("SEND", url, true);
-    xmlhttp.send(kommenttiOlio);
-
+    xmlhttp.send(kommenttiOlio[0]);
 }
