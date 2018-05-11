@@ -81,11 +81,7 @@ console.log(lahetaViesti(pekka))
 
 
 function luoViestiOlio(teksti, lahettaja) {
-<<<<<<< HEAD
   var uusOlio = {viesti: teksti, lampo: "0", nimi: lahettaja, aika: new Date(), kommentit:[{}] };
-=======
-  var uusOlio = {"viesti": teksti "lampo": "0" "nimi": lahettaja "aika": new Date() "kommentit":{}};
->>>>>>> e187e1ce51723c5012d75326ed9500c4df2268fe
   return uusOlio;
 }
 
