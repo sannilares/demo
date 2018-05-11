@@ -77,10 +77,11 @@ function lahetaLampoa(int) {
 }
 
 var pekka = luoViestiOlio("Hei olen Pekka", "Pekka")
-lahetaViesti(pekka)
+console.log(lahetaViesti(pekka))
+
 
 function luoViestiOlio(teksti, lahettaja) {
-  var uusOlio = {"viesti": teksti "lampo": "0" "nimi": lahettaja "aika": ?????????? "kommentit":{}};
+  var uusOlio = {viesti: teksti lampo: "0" nimi: lahettaja aika: new Date() kommentit:[{}] };
   return uusOlio;
 }
 
