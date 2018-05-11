@@ -7,7 +7,7 @@ var lista = haeJson();
 // Tämä funktio hakee viestit
 function haeJson() {
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://maalampo-some-demo.firebaseio.com/.json";
+  var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
 
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -88,7 +88,7 @@ function luoViestiOlio(teksti, lahettaja) {
 function lahetaViesti(viestiOlio) {
 
     // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = haeJson().size          //size???
+    var int = haeJson()          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
