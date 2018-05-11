@@ -135,7 +135,16 @@ function jarjestaAjankohtaiset() {
 
 //Tämä funkio järjestää viestit lämmön määrän mukaisesti, isoin numero ensin
 function jarjestaSuosituin() {
-  lista
+  var jarjestus = viestiObjekti;
+  var x;
+  for (x = 0; x < viestiObjekti.length; x++) {
+    jarjestus[x] = viestiObjekti[x].lampo;
+  }
+  var c = jarjestus.map(function(e, i) {
+    return [e, viestiObjekti[i]];
+  });
+  var oikein = c.sort().reverse;
+  return oikein.values;
 }
 
 //Tämä funkio järjestää viestit kommenttien määrän mukaisesti, isoin numero ensin
