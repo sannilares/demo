@@ -88,7 +88,7 @@ function luoViestiOlio(teksti, lahettaja) {
 // Tämä funktio lisää uuden viestiolion firebaseen
 function lahetaViesti(viestiOlio) {
     // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = viestiObjekti.length;          //size???
+    var int = lista.length;          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
@@ -99,7 +99,7 @@ function lahetaViesti(viestiOlio) {
       }
     };
     //Lisätään viesti firebaseen
-    xmlhttp.open("PUT", url, true);
+    xmlhttp.open("SEND", url, true);
     xmlhttp.send(viestiOlio);
     viestiObjekti = haeJson();
 }
