@@ -59,6 +59,15 @@ form {
   font-family: 'Bellefair', serif;
 }
 
+.postausTyyli {
+  background-color: white;
+  /* opacity: 0.9; */
+  font-family: 'Bellefair', serif;
+  padding: 10px;
+  font-size: 17px;
+  border: 3px solid grey;
+}
+
 .viestinTyyli {
   background-color: white;
   font-family: 'Bellefair', serif;
@@ -81,9 +90,9 @@ nav {
   padding: 15px;
   background-color: #ddc0a1;
   text-align:center;
-  position: fixed;
-  top: 0;
-  width: 100%;
+  /* position: fixed;
+  top: 0; */
+  width: 98%;
 }
 
 a {

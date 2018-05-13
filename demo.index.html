@@ -12,27 +12,27 @@
 
 <body>
 
-<nav>
-  <a class="normal_link" href="demo.index.html">Apua?</a>
-  <a class="thispage" href="demo.index.html">Ajankohtaiset</a>
-  <a class="normal_link" href="demo.index.html">Suosituimmat</a>
-  <a class="normal_link" href="semo.index.html">Omat tietoni</a>
-</nav>
-
 <div class="parallax">
   <div class="otsikko">MAALÄMPÖ</div>
   <div class="alaOtsikko">Alaotsikko</div>
   <div class="kuultavuus">
+    <nav>
+      <a class="normal_link" href="demo.index.html">Apua?</a>
+      <a class="thispage" href="demo.index.html">Ajankohtaiset</a>
+      <a class="normal_link" href="demo.index.html">Suosituimmat</a>
+      <a class="normal_link" href="semo.index.html">Omat tietoni</a>
+    </nav>
     <form>
-      <label for="viesti"><br>Kirjoita...</label><br>
-      <textarea id="viesti"></textarea><br>
-
-      <button class="nappula" onclick="lahetaViesti()">Lähetä</button>
+      <div class="postausTyyli">
+        <label for="viesti"><br>Kirjoita...</label><br>
+        <textarea id="viesti"></textarea><br>
+        <button class="nappula" onclick="lahetaViesti()">Lähetä</button>
+      </div>
     </form>
 
     <form>
       <div class="viestinTyyli">
-        <p>Tässä on jokin valmis viesti (mieti miten tää toteutetaan!)</p>
+        <p>Tässä on jokin valmis viesti (mieti miten tää toteutetaan!)<br>Ja luonnollisesti ymös lämpö täytyy näkyä</p>
         <button class="nappula" onclick="lahetaLampoa()">Lähetä lämpöä</button>
         <p class="kommentinTyyli">   Tässä voisi myös olla joku valmis kommentti</p>
         <label for="kommentti"><br>Kommentoi...</label><br>
