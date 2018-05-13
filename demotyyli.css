@@ -58,6 +58,20 @@ form {
   margin: 24px;
   font-family: 'Bellefair', serif;
 }
+
+.viestinTyyli {
+  background-color: white;
+  font-family: 'Bellefair', serif;
+  padding-left: 5px;
+  padding: 10px;
+  font-size: 17px;
+}
+
+.kommentinTyyli {
+  font-family: 'Bellefair', serif;
+  padding-left: 25px;
+  font-size: 15px;
+}
 /* Ja kuultavan palkin tyyli loppuu tähän */
 
 

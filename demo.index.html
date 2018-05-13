@@ -6,16 +6,17 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="demotyyli.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
   <script src="viestintasovellus.js"></script>
 </head>
 
 <body>
 
 <nav>
-  <a class="normal_link" href="index.html">Apua?</a>
-  <a class="thispage" href="news.html">Ajankohtaiset</a>
-  <a class="normal_link" href="info.html">Suosituimmat</a>
-  <a class="normal_link" href="contact.html">Omat tietoni</a>
+  <a class="normal_link" href="demo.index.html">Apua?</a>
+  <a class="thispage" href="demo.index.html">Ajankohtaiset</a>
+  <a class="normal_link" href="demo.index.html">Suosituimmat</a>
+  <a class="normal_link" href="semo.index.html">Omat tietoni</a>
 </nav>
 
 <div class="parallax">
@@ -30,13 +31,14 @@
     </form>
 
     <form>
-      <p class="viestinTyyli">Tässä on jokin valmis viesti (mieti miten tää toteutetaan!)</p>
-      <button class="nappula" onclick="lahetaLampoa()">Lähetä lämpöä</button>
-      <p class="kommentinTyyli">   Tässä voisi myös olla joku valmis kommentti</p>
-      <label for="kommentti"><br>Kommentoi...</label><br>
-      <textarea id="kommentti"></textarea><br>
-
-      <button class="nappula" onclick="kommentoi()">Kommentoi</button>
+      <div class="viestinTyyli">
+        <p>Tässä on jokin valmis viesti (mieti miten tää toteutetaan!)</p>
+        <button class="nappula" onclick="lahetaLampoa()">Lähetä lämpöä</button>
+        <p class="kommentinTyyli">   Tässä voisi myös olla joku valmis kommentti</p>
+        <label for="kommentti"><br>Kommentoi...</label><br>
+        <textarea id="kommentti"></textarea><br>
+        <button class="nappula" onclick="kommentoi()">Kommentoi</button>
+      </div>
     </form>
   </div>
 </div>
