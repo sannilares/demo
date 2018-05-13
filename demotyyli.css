@@ -12,12 +12,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    height: 740px;
-    padding-top:600px;
+    height: 780px;
+    padding-top:700px;
 }
 
 .kuultavuus {
-  height: 700px;
+  height: 780px;
   background:rgba(255,255,255,0.5);
   /* text-align: center;
   padding: 50px 80px;
@@ -54,7 +54,7 @@ form {
   border-radius: 5px;
   font-size: 16px;
   padding: 60px;
-  width: 61%;
+  width: 81%;
   margin: 24px;
   font-family: 'Bellefair', serif;
 }
@@ -92,7 +92,7 @@ nav {
   text-align:center;
   /* position: fixed;
   top: 0; */
-  width: 98%;
+  width: 97.6%;
 }
 
 a {
