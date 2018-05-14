@@ -129,6 +129,24 @@ a {
 .thispage {
   background-color: #c3c388;
 }
+
+#navbar {
+  overflow: hidden;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
 /* Navin tyyli loppuu */
 
 footer {

@@ -26,6 +26,8 @@
   <script src="viestintasovellus.js"></script>
 </head>
 
+<body>
+
 <script>
     window.onload = function () {
       //sessionStorage.setItem("etunimi", "Sini");
@@ -33,18 +35,36 @@
     };
 </script>
 
-<body>
+<script>
+  window.onscroll = function() {
+    myFunction()
+  };
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  </script>
+
 
 <div class="parallax">
   <div class="otsikko">MAALÄMPÖ</div>
   <div class="alaOtsikko" id = "testi">Alaotsikko </div>
   <div class="kuultavuus">
-    <nav>
-      <a class="normal_link" href="ohjeet.html">Apua?</a>
-      <a class="thispage" href="demo.index.html">Ajankohtaiset</a>
-      <a class="normal_link" href="demo.index.html">Suosituimmat</a>
-      <a class="normal-link" href="profiili.html">Profiili</a>
-    </nav>
+    <div id="navbar">
+      <nav>
+        <a class="normal_link" href="ohjeet.html">Apua?</a>
+        <a class="thispage" href="demo.index.html">Ajankohtaiset</a>
+        <a class="normal_link" href="demo.index.html">Suosituimmat</a>
+        <a class="normal-link" href="profiili.html">Profiili</a>
+      </nav>
+    </div>
     <div class="peittavampiKuultavuus">
       <form>
         <div class="postausTyyli">
