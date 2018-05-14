@@ -81,7 +81,7 @@ function lahetaLampoa(int) {
 
 
 function luoViestiOlio(teksti, lahettaja) {
-  var uusOlio = '{"viesti": teksti, "lampo": "0", "nimi": lahettaja, "aika": new Date(), "numero": viestiObjekti.length, "kommentit":[{}] }';
+  var uusOlio = {"viesti": teksti, "lampo": "0", "nimi": lahettaja, "aika": new Date(), "numero": viestiObjekti.length, "kommentit":[{}] };
   return uusOlio;
 }
 
