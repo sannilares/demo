@@ -4,6 +4,7 @@
 <head>
     <meta charset = "utf-8">
     <link rel = "stylesheet" type = "text/css" href = "login.css">
+    <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
 </head>
 
 <!-- <script type="text/javascript">
@@ -13,44 +14,44 @@
     }
 </script> -->
 
-
+<body>
 <!-- Avaa kirjautumissivun -->
-<button onclick="document.getElementById('kirjautumissivu').style.display='block'">Kirjaudu sisään</button>
+  <button onclick="document.getElementById('kirjautumissivu').style.display='block'">Kirjaudu sisään</button>
 
-<!-- Kirjautumissivu -->
-<div id="kirjautumissivu" class="moduuli">
-  <span onclick="document.getElementById('kirjautumissivu').style.display='none'"
-        class="sulje" title="Sulje moduuli">&times;</span>
+  <!-- Kirjautumissivu -->
+  <div id="kirjautumissivu" class="moduuli">
+    <span onclick="document.getElementById('kirjautumissivu').style.display='none'"
+          class="sulje" title="Sulje moduuli">&times;</span>
 
-  <!-- Kirjautumismoduuli -->
-  <form class="moduulin animaatio" action="/action_page.php">
-    <div class="kuva">
-      <img src="KUVA.png" alt="Kuva" class="kuva">
-    </div>
+    <!-- Kirjautumismoduuli -->
+    <form class="moduulin animaatio" action="/action_page.php">
+      <div class="kuva">
+        <img src="KUVA.png" alt="Kuva" class="kuva">
+      </div>
 
-    <div class="kirjautuminen" onsubmit="callme()">
-      <label for="käyttis"><b>Käyttäjänimi</b></label>
-      <input type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttäjänimi" required>
+      <div class="kirjautuminen" onsubmit="callme()">
+        <label for="käyttis"><b>Käyttäjänimi</b></label>
+        <input type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttäjänimi" required>
 
-      <label for="salasana"><b>Salasana</b></label>
-      <input type="password" placeholder="Syötä salasanasi" name="password" required>
+        <label for="salasana"><b>Salasana</b></label>
+        <input type="password" placeholder="Syötä salasanasi" name="password" required>
 
-      <button type="button"
-              onclick="window.location.href='demo.index.html'"
-              class = "kirjaudu">Kirjaudu sisään</button>
+        <button type="button"
+                onclick="window.location.href='demo.index.html'"
+                class = "kirjaudu">Kirjaudu sisään</button>
 
-      <label>
-          <input type="checkbox" checked="checked" name="muista">Muista minut
-      </label>
-    </div>
+        <label>
+            <input type="checkbox" checked="checked" name="muista">Muista minut
+        </label>
+      </div>
 
-    <div class="container">
-      <button type="button"
-              onclick="document.getElementById('kirjautumissivu').style.display='none'"
-              class="takaisin">Takaisin</button>
-      <span class="salis">Unohtuiko <a href="#">salasana?</a></span>
-    </div>
-  </form>
-</div>
-
+      <div class="container">
+        <button type="button"
+                onclick="document.getElementById('kirjautumissivu').style.display='none'"
+                class="takaisin">Takaisin</button>
+        <span class="salis">Unohtuiko <a href="#">salasana?</a></span>
+      </div>
+    </form>
+  </div>
+ </body>
 </html>
