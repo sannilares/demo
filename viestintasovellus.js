@@ -141,16 +141,16 @@ function lahetaViesti(viestiOlio) {
   lampoNappula.innerHTML = "Lähetä lämpöä!";
 
   var kirjoitaKommentti = document.createElement("textarea");
-  commentInput.innerHTML.value = "Haluatko kommentoida?";
-  commentInput.setAttribute("class", "kirjoitaKommentti");
+  kirjoitaKommentti.innerHTML.value = "Haluatko kommentoida?";
+  kirjoitaKommentti.setAttribute("class", "kirjoitaKommentti");
   // commentInput.setAttribute("rows", "4");
   // commentInput.setAttribute("cols", "50");
   //commentInput.setAttribute("id", "ments" + mes.id);
 
   var kommenttiNappula = document.createElement("button");
-  commentButton.innerHTML = "Kommentoi";
+  kommenttiNappula.innerHTML = "Kommentoi";
   // commentButton.setAttribute("id", "ts" + mes.id);
-  commentButton.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
+  kommenttiNappula.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
 
   viesti.appendChild(viestiTeksti);
   viesti.appendChild(lahettaja);
