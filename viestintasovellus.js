@@ -10,17 +10,12 @@ function haeJson() {
   var xmlhttp = new XMLHttpRequest();
   var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
 
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-
-      console.log(this.responseText);
-      viestiObjekti = JSON.parse(this.responseText);
-
-      // Voidaan kutsua funktiota tässä
-      // Ja päivitetään sivu ehkäpä?
-
-    }
-  };
+  // xmlhttp.onreadystatechange = function() {
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     console.log(this.responseText);
+  //     viestiObjekti = JSON.parse(this.responseText);
+  //   }
+  // };
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
   return xmlhttp.responseText;
@@ -81,29 +76,82 @@ function lahetaLampoa(int) {
 
 
 function luoViestiOlio(teksti, lahettaja) {
-  var uusOlio = {"viesti": teksti, "lampo": "0", "nimi": lahettaja, "aika": new Date(), "numero": viestiObjekti.length, "kommentit":[{}] };
-  return uusOlio;
+  this.viesti = teksti;
+  this.lampo = "0";
+  this.nimi = lahettaja;
+  this.aika = new Date();
+  this.numero = viestiObjekti.length;
+  this.kommentit = [{}];
+  return {viesti, lampo, nimi, aika, numero, kommentit};
+}
+// ALLA VANHA YRITYS VIESTIOLION LUOMISELLE.
+// var uusOlio = {"viesti": teksti, "lampo": "0", "nimi": lahettaja, "aika": new Date(), "numero": viestiObjekti.length, "kommentit":[{}] };
+// return uusOlio;
+var database = firebase.database();
+
+function viestiJSONiin(viestiOlio) {
+  firebase.database().ref(viestiOlio.numero).set({
+    viesti: viestiOlio.viesti,
+    lampo: viestiOlio.lampo,
+    nimi: viestiOlio.nimi,
+    aika: viestiOlio.aika,
+    numero: viestiOlio.numero,
+    kommentit: viestiOlio.kommentit
+  });
+  //viestiObjekti = JSON.parse(haeJSON());
+  return "moi";
 }
 
-
-// Tämä funktio lisää uuden viestiolion firebaseen
 function lahetaViesti(viestiOlio) {
-    // Mietitään mihin kohtaan listaa uusi olio lisätään
-    var int = lista.length;          //size???
-    var xmlhttp = new XMLHttpRequest();
-    //Valitaan oikea url listan koon mukaisesti
-    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/3.json";
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-        //viestiObjekti = JSON.parse(this.responseText);
-      }
-    };
-    //Lisätään viesti firebaseen
-    xmlhttp.open("PUT", url, true);     // Send:iä käyttämällä tulee cross-origin virheilmoitus
-    xmlhttp.send(viestiOlio);
-    viestiObjekti = haeJson();
+  var viesti = document.createElement("div");
+  viesti.setAttribute("class", "viesti");
+  viesti.setAttribute("id", viestiOlio.numero);
+
+  var viestiTeksti = document.createElement("p");
+  viestiTeksti.setAttribute("class", "viestiTeksti");
+  var teksti = document.createTextNode(viestiOlio.viesti);
+  viestiTeksti.appendChild(teksti);
+
+  var lahettaja = document.createElement("p");
+  lahettaja.setAttribute("class", "lahettaja");
+  var aa = document.createTextNode(viestiOlio.nimi);
+  lahettaja.appendChild(aa);
+
+  var ajankohta = document.createElement("p");
+  ajankohta.setAttribute("class", "ajankohta");
+  var bb = document.createTextNode(viestiOlio.aika);
+  ajankohta.appendChild(bb);
+
+  var lampo = document.createElement("p");
+  lampo.setAttribute("class", "lampo");
+  var cc = document.createTextNode(viestiOlio.nimi);
+  lampo.appendChild(cc);
+
+  var numero = document.createElement("p");
+  numero.setAttribute("class", "numero");
+  var dd = document.createTextNode(viestiOlio.nimi);
+  numero.appendChild(dd);
 }
+
+// ALLA VANHA YRITYS VIESTIN LÄHETTÄMISELLE.
+// // Tämä funktio lisää uuden viestiolion firebaseen
+// function lahetaViesti(viestiOlio) {
+//     // Mietitään mihin kohtaan listaa uusi olio lisätään
+//     var int = lista.length;          //size???
+//     var xmlhttp = new XMLHttpRequest();
+//     //Valitaan oikea url listan koon mukaisesti
+//     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/3.json";
+//     xmlhttp.onreadystatechange = function() {
+//       if (this.readyState == 4 && this.status == 200) {
+//         console.log(this.responseText);
+//         //viestiObjekti = JSON.parse(this.responseText);
+//       }
+//     };
+//     //Lisätään viesti firebaseen
+//     xmlhttp.open("PUT", url, true);     // Send:iä käyttämällä tulee cross-origin virheilmoitus
+//     xmlhttp.send(viestiOlio);
+//     viestiObjekti = haeJson();
+// }
 
 
 
