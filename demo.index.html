@@ -40,6 +40,13 @@
         <button class="nappula" onclick="kommentoi()">Kommentoi</button>
       </div>
     </form>
+    <form>
+      <label for="kaverii">Kutsu kaveri</label><br>
+       <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
+      <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
+       <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
+      <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
+    </form>
   </div>
 </div>
 
