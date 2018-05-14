@@ -6,6 +6,13 @@
     <link rel = "stylesheet" type = "text/css" href = "login.css">
 </head>
 
+<script type="text/text/javascript">
+      document.getElementById("syötä").onclick = function () {
+        location.href = "www.google.com";
+      }
+</script>
+
+
 <!-- Avaa kirjautumissivun -->
 <button onclick="document.getElementById('kirjautumissivu').style.display='block'">Kirjaudu sisään</button>
 
@@ -27,7 +34,9 @@
       <label for="salis"><b>Password</b></label>
       <input type="Salasana" placeholder="Syötä salasanasi" name="salis" required>
 
-      <button type="syötä">Kirjaudu sisään</button>
+      <button type="button"
+              onclick="window.location.href='demo.index.html'"
+              class = "kirjaudu">Kirjaudu sisään</button>
       <label>
         <input type="checkbox" checked="checked" name="muista"> Muista minut
       </label>
