@@ -6,10 +6,14 @@
     <link rel = "stylesheet" type = "text/css" href = "login.css">
 </head>
 
-<script type="text/text/javascript">
+<script type="text/javascript">
       document.getElementById("syötä").onclick = function () {
         location.href = "www.google.com";
-      }
+      };
+      function callme() {
+        var name = document.getElementById('käyttis').value;
+        sessionStorage.setItem('userName', name);
+      };
 </script>
 
 
@@ -27,19 +31,21 @@
       <img src="KUVA.png" alt="Kuva" class="kuva">
     </div>
 
-    <div class="kirjautuminen">
-      <label for="käyttis"><b>Käyttäjänimi</b></label>
-      <input type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required>
+    <form action = "2.html" onsubmit="callme()">
+        <div class="kirjautuminen" onsubmit="callme()">
+        <label for="käyttis"><b>Käyttäjänimi</b></label>
+        <input id="tbName" type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required>
 
-      <label for="salis"><b>Password</b></label>
-      <input type="Salasana" placeholder="Syötä salasanasi" name="salis" required>
+        <label for="salis"><b>Password</b></label>
+        <input type="Salasana" placeholder="Syötä salasanasi" name="salis" required>
 
-      <button type="button"
+        <button type="button"
               onclick="window.location.href='demo.index.html'"
               class = "kirjaudu">Kirjaudu sisään</button>
-      <label>
+    </form>
+    <label>
         <input type="checkbox" checked="checked" name="muista"> Muista minut
-      </label>
+    </label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
