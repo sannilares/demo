@@ -7,13 +7,10 @@
 </head>
 
 <script type="text/javascript">
-      document.getElementById("syötä").onclick = function () {
-        location.href = "www.google.com";
-      };
-      function callme() {
-        var name = document.getElementById("käyttis").value;
-        sessionStorage.setItem("userName", name);
-      };
+    var julkasunimi = käyttisnimi.value;
+    function store() {
+      sessionStorage.setItem("joku", julkasunimi);
+    }
 </script>
 
 
@@ -34,13 +31,14 @@
     <form action = "2.html" onsubmit="callme()">
         <div class="kirjautuminen" onsubmit="callme()">
         <label for="käyttis"><b>Käyttäjänimi</b></label>
-        <input id="tbName" type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required>
+        <input id="käyttisnimi" type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required value="">
 
         <label for="salis"><b>Password</b></label>
         <input type="Salasana" placeholder="Syötä salasanasi" name="salis" required>
 
         <button type="button"
               onclick="window.location.href='demo.index.html'"
+              onclick="store()"
               class = "kirjaudu">Kirjaudu sisään</button>
     </form>
     <label>
