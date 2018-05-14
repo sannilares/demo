@@ -6,12 +6,12 @@
     <link rel = "stylesheet" type = "text/css" href = "login.css">
 </head>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var julkasunimi = "Sini" ;
     function store() {
       sessionStorage.setItem("etunimi", julkasunimi);
     }
-</script>
+</script> -->
 
 
 <!-- Avaa kirjautumissivun -->
@@ -28,22 +28,20 @@
       <img src="KUVA.png" alt="Kuva" class="kuva">
     </div>
 
-    <form action = "2.html" onsubmit="callme()">
-        <div class="kirjautuminen" onsubmit="callme()">
-        <label for="käyttis"><b>Käyttäjänimi</b></label>
-        <input id="käyttisnimi" type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required value="">
+    <div class="kirjautuminen" onsubmit="callme()">
+      <label for="käyttis"><b>Käyttäjänimi</b></label>
+      <input type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttis" required>
 
-        <label for="salis"><b>Password</b></label>
-        <input type="Salasana" placeholder="Syötä salasanasi" name="salis" required>
+      <label for="salasana"><b>Salasana</b></label>
+      <input type="password" placeholder="Syötä salasanasi" name="salasana" required>
 
-        <button type="button"
+      <button type="button"
               onclick="window.location.href='demo.index.html'"
-              onclick="store()"
               class = "kirjaudu">Kirjaudu sisään</button>
-    </form>
-    <label>
-        <input type="checkbox" checked="checked" name="muista"> Muista minut
-    </label>
+
+      <label>
+          <input type="checkbox" checked="checked" name="muista">Muista minut
+      </label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">

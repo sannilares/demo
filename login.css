@@ -4,7 +4,7 @@ form {
 }
 
 /* Käyttäjänimen ja salasanan boksit */
-input[type=käyttäjänimi], input[type=salasana] {
+input[type=käyttäjänimi], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -86,17 +86,16 @@ span.salis {
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
+/* Moduuliboksi */
 .moduulin {
     background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
+    margin: 5px auto;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
 }
 
-/* Takaisin-nappula */
+/* Rasti */
 .sulje {
-    /* Position it in the top right corner outside of the modal */
     position: absolute;
     right: 25px;
     top: 0;
