@@ -61,19 +61,24 @@ form {
 
 .postausTyyli {
   background-color: white;
-  /* opacity: 0.9; */
+  opacity: 0.9;
   font-family: 'Bellefair', serif;
   padding: 10px;
   font-size: 17px;
-  border: 3px solid grey;
 }
 
 .viestinTyyli {
   background-color: white;
+  opacity: 0.9;
   font-family: 'Bellefair', serif;
   padding-left: 5px;
   padding: 10px;
   font-size: 17px;
+  /* Rollaus-efekti */
+  overflow: auto;
+  height: 150px;
+  display: block;
+  padding-right: 4px;
 }
 
 .kommentinTyyli {
