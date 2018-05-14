@@ -102,7 +102,9 @@ function viestiJSONiin(viestiOlio) {
   return "moi";
 }
 
+// Tämä funktio lisaa viestin näkyville sivulle, ja luo viestille kommentointi ja lämmön lähetys mahdollisuudet
 function lahetaViesti(viestiOlio) {
+
   var viesti = document.createElement("div");
   viesti.setAttribute("class", "viesti");
   viesti.setAttribute("id", viestiOlio.numero);
@@ -139,7 +141,7 @@ function lahetaViesti(viestiOlio) {
   lampoNappula.innerHTML = "Lähetä lämpöä!";
 
   var kirjoitaKommentti = document.createElement("textarea");
-  commentInput.innerHTML.value = "Kommentoi tähän";
+  commentInput.innerHTML.value = "Haluatko kommentoida?";
   commentInput.setAttribute("class", "kirjoitaKommentti");
   // commentInput.setAttribute("rows", "4");
   // commentInput.setAttribute("cols", "50");
@@ -183,7 +185,8 @@ function lahetaViesti(viestiOlio) {
 // }
 
 
-
+//KUN VIESTIN LÄHETTÄMINEN TOIMII, MIETI MITÄ HELVETTIÄ TÄSSÄ PITÄISI TEHDÄ!!!!:
+// Tsemppii me! Pystytte siihen ihan varmast!! <3
 function luoKommenttiOlio(teksti, lahettaja, mihinViestiin) {
   var uusOlio = {viesti: teksti, nimi: lahettaja, aika: new Date() };
   return [uusOlio, mihinViestiin.numero];
@@ -205,6 +208,9 @@ function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
     xmlhttp.send(kommenttiOlio[0]);
 }
 
+
+// MIETI MYÖS, MITÄ IHMETTÄ TÄSSÄ TAPAHTUU... PITÄISIKÖ TÄÄ TOTEUTTAA KAHDELLE ERI SIVULLE? RIITTÄÄKÖ LISTAN JÄRJESTÄMINEN JÄRJESTÄMISEKSI?
+// Jos tää menee liian monimutkaseks, nii älkää stressatko tästä vaan tehkää muut jutut hyvin :))
 
 // Tämä funktio järjestää viestit väärinpäin olevan listan mukaisesti, ts. uusin ensin
 function jarjestaAjankohtaiset() {
