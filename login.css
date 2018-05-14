@@ -16,6 +16,7 @@ input[type=käyttäjänimi], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-family: 'Bellefair', serif;
 }
 
 /* nappien tyylit */
@@ -27,6 +28,7 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
+    font-family: 'Bellefair', serif;
 }
 
 button:hover {
@@ -39,6 +41,7 @@ button:hover {
     padding: 10px 18px;
     background-color: #c3c388;
     margin-left: 10px;
+    font-family: 'Bellefair', serif;
 }
 
 /* sisäänkirjautumiskuvan tyyli */
