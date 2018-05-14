@@ -32,10 +32,9 @@
   left: 10%;
   /* Rollaus-efekti */
   overflow: auto;
-  height: 550px;
+  height: 650px;
   display: block;
   padding-right: 4px;
-
 }
 /* Parallax-efekti loppuu */
 

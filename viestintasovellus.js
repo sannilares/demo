@@ -27,6 +27,7 @@ function haeJson() {
 }
 
 
+//TOIMII, koska muuten lämmön lähettäminen ei onnistuisi
 // Tämä funktio hakee tietyn viesti-olion
 function haeViesti(int, callback) {
   var xmlhttp = new XMLHttpRequest();
@@ -46,7 +47,7 @@ function haeViesti(int, callback) {
 }
 
 
-
+// TOIMII, testattu konsolilla
 // Tämä funktio lisää viestin firebaseen
 function lahetaLampoa(int) {
 
@@ -141,7 +142,7 @@ function jarjestaSuosituin() {
 
 
 
-  
+
   // var jarjestus = viestiObjekti;
   // var x;
   // for (x = 0; x < viestiObjekti.length; x++) {
