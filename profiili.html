@@ -8,17 +8,17 @@
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
 
 </head>
-
+<body>
 <div class="parallax">
   <div class="otsikko">MAALÄMPÖ</div>
   <div class="alaOtsikko" id = "testi">Alaotsikko </div>
   <div class="kuultavuus">
-    <nav>
+    <div id="navbar">
       <a class="normal_link" href="ohjeet.html">Apua?</a>
       <a class="normal_link" href="demo.index.html">Ajankohtaiset</a>
       <a class="normal_link" href="demo.index.html">Suosituimmat</a>
       <a class="thispage" href="profiili.html">Profiili</a>
-    </nav>
+    </div>
 
 <h1>
   Oma profiili
@@ -27,7 +27,32 @@
   Jotain siistii jee öö voi vide
 <p>
 
+  <form>
+    <label for="kaverii">Kutsu kaveri</label><br>
+     <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
+    <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
+     <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
+    <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
+  </form>
+
 </div>
 </div>
+
+<!-- Navin stickyn funktiot -->
+<script>
+  window.onscroll = function() {myFunction()};
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+</script>
+</body>
 
 </html>

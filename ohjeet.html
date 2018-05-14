@@ -6,19 +6,19 @@
     <link rel="stylesheet" href="demotyyli.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
-
 </head>
+<body>
 
 <div class="parallax">
   <div class="otsikko">MAALÄMPÖ</div>
   <div class="alaOtsikko" id = "testi">Alaotsikko </div>
   <div class="kuultavuus">
-    <nav>
+    <div id="navbar">
       <a class="thispage" href="ohjeet.html">Apua?</a>
       <a class="normal_link" href="demo.index.html">Ajankohtaiset</a>
       <a class="normal_link" href="demo.index.html">Suosituimmat</a>
       <a class="normal-link" href="profiili.html">Profiili</a>
-    </nav>
+    </div>
 
 <h1>
   Kuinka käytät lämpösovellusta?
@@ -27,21 +27,37 @@
   Lämpösovelluksessa voit julkaista julkiselle foorumille omia kokemuksiasi, mielipiteitä
   sekä mieltä askarruttavia kysymyksiä maalämmöstä. Postaaminen onnistuu helposti
   julkaise-painikkeella.
-
+  <br><br>
   Oman sisällön tuottamisen lisäksi voit myös käydä keskustelua muiden käyttäjien
   kanssa kommentoimailla heidän julkaisujaan. Voit kommentoida tiettyä julkaisua
   valitsemallla haluamasi viestin ja sen jälkeen julkaista kommenttisi kommentoi-painikkeella.
-
+  <br><br>
   Sovelluksessamme on myös mahdollista jakaa lämpöä toisten julkaisuille. Lämmön jakaminen
   onnistuu liekki-painikkeen avulla. Lämmön jakaminen myös kasvattaa koko forumin yhteistä
   lämpömittaria.
-
+  <br><br>
   Voit järjestää foorumille tulleet julkaisut julakisuajankohdan tai suosituimmuuden mukaan.
-
+  <br><br>
   Jotain kliseistä lämmöstä.
 <p>
 
 </div>
 </div>
+
+<script>
+  window.onscroll = function() {myFunction()};
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+</script>
+</body>
 
 </html>

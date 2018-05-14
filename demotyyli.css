@@ -35,6 +35,7 @@
   height: 650px;
   display: block;
   padding-right: 4px;
+  z-index: 5;
 }
 /* Parallax-efekti loppuu */
 
@@ -103,17 +104,19 @@ form {
 
 
 /* Navin tyyli alkaa */
-nav {
+#navbar {
   display: block;
+  overflow: hidden;
   padding: 15px;
   background-color: #ddc0a1;
   text-align:center;
   /* position: fixed;
   top: 0; */
   width: 97.6%;
+  z-index: 10;
 }
 
-a {
+#navbar a {
   display: inline;
   color: white;
   text-align: center;
@@ -130,10 +133,6 @@ a {
   background-color: #c3c388;
 }
 
-#navbar {
-  overflow: hidden;
-}
-
 .content {
   padding: 16px;
 }
@@ -141,7 +140,7 @@ a {
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 97.6%;
 }
 
 .sticky + .content {
