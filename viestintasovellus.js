@@ -92,7 +92,7 @@ function lahetaViesti(viestiOlio) {
     var int = lista.length;          //size???
     var xmlhttp = new XMLHttpRequest();
     //Valitaan oikea url listan koon mukaisesti
-    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + ".json";
+    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/3.json";
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         console.log(this.responseText);
@@ -100,7 +100,7 @@ function lahetaViesti(viestiOlio) {
       }
     };
     //Lisätään viesti firebaseen
-    xmlhttp.open("SEND", url, true);
+    xmlhttp.open("PUT", url, true);     // Send:iä käyttämällä tulee cross-origin virheilmoitus
     xmlhttp.send(viestiOlio);
     viestiObjekti = haeJson();
 }
