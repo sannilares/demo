@@ -23,6 +23,20 @@
   padding: 50px 80px;
   text-align: justify; */
 }
+
+.peittavampiKuultavuus {
+  background-color: white;
+  opacity: 0.9;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  /* Rollaus-efekti */
+  overflow: auto;
+  height: 550px;
+  display: block;
+  padding-right: 4px;
+
+}
 /* Parallax-efekti loppuu */
 
 
@@ -54,31 +68,31 @@ form {
   border-radius: 5px;
   font-size: 16px;
   padding: 60px;
-  width: 81%;
+  /* width: 81%; */
   margin: 24px;
   font-family: 'Bellefair', serif;
 }
 
 .postausTyyli {
-  background-color: white;
-  opacity: 0.9;
+  /* background-color: white;
+  opacity: 0.9; */
   font-family: 'Bellefair', serif;
   padding: 10px;
   font-size: 17px;
 }
 
 .viestinTyyli {
-  background-color: white;
-  opacity: 0.9;
+  /* background-color: white;
+  opacity: 0.9; */
   font-family: 'Bellefair', serif;
   padding-left: 5px;
   padding: 10px;
   font-size: 17px;
   /* Rollaus-efekti */
-  overflow: auto;
+  /* overflow: auto;
   height: 150px;
   display: block;
-  padding-right: 4px;
+  padding-right: 4px; */
 }
 
 .kommentinTyyli {
