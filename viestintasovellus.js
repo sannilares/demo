@@ -114,23 +114,52 @@ function lahetaViesti(viestiOlio) {
 
   var lahettaja = document.createElement("p");
   lahettaja.setAttribute("class", "lahettaja");
-  var aa = document.createTextNode(viestiOlio.nimi);
-  lahettaja.appendChild(aa);
+  var tekst = document.createTextNode(viestiOlio.nimi);
+  lahettaja.appendChild(tekst);
 
   var ajankohta = document.createElement("p");
   ajankohta.setAttribute("class", "ajankohta");
-  var bb = document.createTextNode(viestiOlio.aika);
-  ajankohta.appendChild(bb);
+  var teks = document.createTextNode(viestiOlio.aika);
+  ajankohta.appendChild(teks);
 
   var lampo = document.createElement("p");
   lampo.setAttribute("class", "lampo");
-  var cc = document.createTextNode(viestiOlio.nimi);
-  lampo.appendChild(cc);
+  var tek = document.createTextNode(viestiOlio.lampo);
+  lampo.appendChild(tek);
 
-  var numero = document.createElement("p");
-  numero.setAttribute("class", "numero");
-  var dd = document.createTextNode(viestiOlio.nimi);
-  numero.appendChild(dd);
+  var kommentit = document.createElement("p");
+  kommentit.setAttribute("class", "kommentit");
+  var te = document.createTextNode(viestiOlio.kommentit);
+  kommentit.appendChild(te);
+
+  var lampoNappula = document.createElement("button");
+  lampoNappula.setAttribute("class", "lampoNappula");
+  //lampoNappula.setAttribute("id", "kes" + viestiOlio.numero);   // Kes???
+  lampoNappula.setAttribute("onClick", "lahetaLampoa(this.numero)");
+  lampoNappula.innerHTML = "Lähetä lämpöä!";
+
+  var kirjoitaKommentti = document.createElement("textarea");
+  commentInput.innerHTML.value = "Kommentoi tähän";
+  commentInput.setAttribute("class", "kirjoitaKommentti");
+  // commentInput.setAttribute("rows", "4");
+  // commentInput.setAttribute("cols", "50");
+  //commentInput.setAttribute("id", "ments" + mes.id);
+
+  var kommenttiNappula = document.createElement("button");
+  commentButton.innerHTML = "Kommentoi";
+  // commentButton.setAttribute("id", "ts" + mes.id);
+  commentButton.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
+
+  viesti.appendChild(viestiTeksti);
+  viesti.appendChild(lahettaja);
+  viesti.appendChild(ajankohta);
+  viesti.appendChild(lampo);
+  viesti.appendChild(lampoNappula);
+  viesti.appendChild(kommentit);
+  viesti.appendChild(kirjoitaKommentti);
+  viesti.appendChild(kommenttiNappula);
+
+
 }
 
 // ALLA VANHA YRITYS VIESTIN LÄHETTÄMISELLE.
