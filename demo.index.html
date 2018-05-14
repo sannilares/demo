@@ -26,11 +26,17 @@
   <script src="viestintasovellus.js"></script>
 </head>
 
+<script>
+    window.onload = function () {
+      document.getElementById('testi').innerText = "Hello, " + sessionStorage.getItem('userName')
+    };
+</script>
+
 <body>
 
 <div class="parallax">
   <div class="otsikko">MAALÄMPÖ</div>
-  <div class="alaOtsikko">Alaotsikko</div>
+  <div class="alaOtsikko" id = "testi">Alaotsikko </div>
   <div class="kuultavuus">
     <nav>
       <a class="normal_link" href="demo.index.html">Apua?</a>
