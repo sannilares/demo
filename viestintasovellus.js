@@ -38,20 +38,6 @@ var lista = haeJson();
 
 // Tämä funktio hakee viestit
 function haeJson() {
-
-// // Import Admin SDK
-// var admin = require("firebase-admin");
-//
-// // Get a database reference to our posts
-// var db = admin.database();
-// var ref = db.ref("uutiset");
-//
-// // Attach an asynchronous callback to read the data at our posts reference
-// ref.on("value", function(snapshot) {
-//   console.log(snapshot.val());
-// }, function (errorObject) {
-//   console.log("Ilmeni virhe: " + errorObject.code);
-// });
   var xmlhttp = new XMLHttpRequest();
   var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
 
@@ -119,7 +105,8 @@ function luoViestiOlio(teksti) {
   this.viesti = teksti;
   this.lampo = "0";
   this.nimi = localStorage.getItem("etunimi");
-  this.aika = new Date();
+  var d = new Date();
+  this.aika = d.toLocaleString();
   this.numero = viestiObjekti.length;
   this.kommentit = [{}];
   return {viesti, lampo, nimi, aika, numero, kommentit};
@@ -247,7 +234,8 @@ function lahetaViesti(viestiOlio) {
 function luoKommenttiOlio(teksti) {
   this.viesti = teksti;
   this.nimi = localStorage.getItem("etunimi");
-  this.aika = new Date();
+  var d = new Date();
+  this.aika = d.toLocaleString();
   return {viesti, nimi, aika};
 }
 

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset = "utf-8">
@@ -9,19 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
+    /* Tekstin tyyli */
       body {
         font-family: 'Bellefair', serif;
       }
       p {
-        padding: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
       }
       h1 {
         padding: 10px;
       }
+      /* kuvan tyyli */
+      .kuva_ohjeissa {
+        position: absolute;
+        width: 60%;
+        left: 20%;
+        filter: grayscale(100%);
+      }
     </style>
 </head>
 <body>
-
 <div class="parallax">
   <div class="otsikko">MAALÄMPÖ</div>
   <div class="alaOtsikko" id = "testi">Alaotsikko </div>
@@ -58,6 +65,7 @@
         <br><br>
         Nautinnollisia ja lämpimiä hetkiä lämpöpalstalla!
       <p>
+        <img src=ohjekuva.png alt="Comment Like Share" class="kuva_ohjeissa"></img>
     </div>
   </div>
 </div>

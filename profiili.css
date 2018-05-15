@@ -1,12 +1,15 @@
+/* Kaikki keskelle ja oikea fontti */
 body {
   text-align: center;
   font-family: 'Bellefair', serif;
 }
 
+/* Otsikon fontti */
 h1 {
   font-size: 26px;
 }
 
+/* kuva oikean kokoiseksi ja oikeaan kohtaan */
 .kuva {
   position: absolute;
   left: 45%;
@@ -14,21 +17,21 @@ h1 {
   height: auto;
 }
 
+/* nimi oikeaan kohtaan ja oikean kokoiseksi */
 .käyttäjänimi {
   position: relative;
   font-size: 24px;
   padding: 15px;
 }
 
+/* lämpö */
 .lämmönmäärä {
   font-size: 20px;
 }
 
+/* Asetukset oikeaan kohtaan (ei tee vielä mitään) */
 .setting {
   font-size: 24px;
-  /* width: 460px;
-  padding: 5px;
-  float: right; */
   border: 10px;
   padding-top: 20px;
 }
@@ -40,6 +43,7 @@ h1 {
   float: rigth;
 }
 
+/* kirjaudu ulos */
 .ulos {
       background-color: #ddc0a1;
       color: white;
