@@ -113,19 +113,6 @@ function luoViestiOlio(teksti) {
 
 var database = firebase.database();
 
-// ALLA TOISENLAINEN YRITYS VIESTIN JSONIIN LISÄÄMISELLE
-// function viestiJSONiin(viestiOlio) {
-//   firebase.database().ref(viestiOlio.numero).set({
-//     viesti: viestiOlio.viesti,
-//     lampo: viestiOlio.lampo,
-//     nimi: viestiOlio.nimi,
-//     aika: viestiOlio.aika,
-//     numero: viestiOlio.numero,
-//     kommentit: viestiOlio.kommentit
-//   });
-//   json = JSON.parse(haeJson());
-// }
-
 // Tämä funktio lisää uuden viestiolion firebaseen
 function viestiJSONiin(viestiOlio) {
     // Mietitään mihin kohtaan listaa uusi olio lisätään
@@ -153,6 +140,7 @@ function viestiJSONiin(viestiOlio) {
 function lahetaViesti(viestiOlio) {
   console.log("1. Päästiin viestiOlion luomisesta lahetaViestiin saakka")
 
+  // Luodaan tarvittavat tekstit, kentät ja nappulat:
   var viesti = document.createElement("div");
   viesti.setAttribute("class", "viesti");
   // viesti.setAttribute("id", viestiOlio.numero);
@@ -194,7 +182,7 @@ function lahetaViesti(viestiOlio) {
   kirjoitaKommentti.innerHTML.value = "Haluatko kommentoida?";
   kirjoitaKommentti.setAttribute("id", "kirjoitaKommenttiId" + viestiOlio.numero);
   kirjoitaKommentti.setAttribute("rows", "4");
-  kirjoitaKommentti.setAttribute("cols", "50");
+  kirjoitaKommentti.setAttribute("cols", "60");
 
   var kommenttiNappula = document.createElement("button");
   kommenttiNappula.innerHTML = "Kommentoi";
@@ -203,6 +191,7 @@ function lahetaViesti(viestiOlio) {
   kommenttiNappula.setAttribute("onClick", "lahetaKommentti(kommenttiOlio)");
   console.log("2. Kaikki tarvittava on saatu luotua")
 
+  // Kun kaikki tarvittava on luotu (ylempänä), on ne nimettävä 'viestin' lapsiksi
   viesti.appendChild(viestiTeksti);
   viesti.appendChild(lahettaja);
   viesti.appendChild(ajankohta);
@@ -213,15 +202,16 @@ function lahetaViesti(viestiOlio) {
   viesti.appendChild(kommenttiNappula);
   console.log("3. Kaikki tarvittava on appendattu")
 
+  // Järjestys ja viestien postaaminen sivulle
   var aa = document.getElementById("viestit");
-  console.log("4. aa-muuttuja on nyt luotu")
+  console.log("4. Aa-muuttuja on nyt luotu")
 
   if (aa.hasChildNodes()) {
     aa.insertBefore(viesti, haeViesti(viestiObjekti.length, console.log));
   } else {
     aa.appendChild(viesti);
   }
-  console.log("5. random if-lausekin saattoi jopa juuri ja juuri toteutua")
+  console.log("5. Random if-lausekin saattoi jopa juuri ja juuri toteutua (aa:ta tarvittiin tässä)")
 
   // Kun käyttäjä painaa nappia, alla oleva tapahtunee
   document.getElementById("kommenttiId" + viestiOlio.numero).addEventListener("keyup", function(event) {
@@ -235,34 +225,42 @@ function lahetaViesti(viestiOlio) {
   });
   console.log("6. Päästiin funktion loppuun. Hurraa!!")
 
+  // Kutsutaan vielä funktiota, jotta uusin viesti saataisiin talteen myös firebasen.
   viestiJSONiin(viestiOlio)
-
 }
-
-//KUN VIESTIN LÄHETTÄMINEN TOIMII, MIETI MITÄ HELVETTIÄ TÄSSÄ PITÄISI TEHDÄ!!!!:
-// Tsemppii me! Pystytte siihen ihan varmast!! <3
 
 // Funktio luo kommenttiOlion
 function luoKommenttiOlio(teksti) {
   this.viesti = teksti;
   this.nimi = localStorage.getItem("etunimi");
   this.aika = new Date();
-  //this.numero = ???;
   return {viesti, nimi, aika};
 }
 
-// MIHIN VIESTIIN HEMMETTI SOIKOON????
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
-function lahetaKommentti(kommenttiOlio) {
+function lahetaKommentti(kommenttiOlio, viestiOlio) {
   firebase.database().ref(viestiOlio.numero).set({
-    kommentti: [{
+    kommentti: viestiOlio.kommentti: [{
       viesti: kommenttiOlio.viesti,
       nimi: kommenttiOlio.nimi,
       aika: kommenttiOlio.aika,
     }]
   });
-  //viestiObjekti = JSON.parse(haeJson());
+  json = JSON.parse(haeJson());
 }
+
+// ALLA TOISENLAINEN YRITYS VIESTIN JSONIIN LISÄÄMISELLE
+// function viestiJSONiin(viestiOlio) {
+//   firebase.database().ref(viestiOlio.numero).set({
+//     viesti: viestiOlio.viesti,
+//     lampo: viestiOlio.lampo,
+//     nimi: viestiOlio.nimi,
+//     aika: viestiOlio.aika,
+//     numero: viestiOlio.numero,
+//     kommentit: viestiOlio.kommentit
+//   });
+//   json = JSON.parse(haeJson());
+// }
 
 // Alla vanhoja testauksia erinäisille asioille...
 // function luoKommenttiOlio(teksti, lahettaja, mihinViestiin) {
@@ -297,9 +295,6 @@ function lahetaKommentti(kommenttiOlio) {
 //
 // //Tämä funkio järjestää viestit lämmön määrän mukaisesti, isoin numero ensin
 // function jarjestaSuosituin() {
-//
-//
-//
 //
 //
 //
