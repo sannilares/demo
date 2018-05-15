@@ -47,15 +47,16 @@
         <div class="postausTyyli">
           <label for="viesti"><br>Kirjoita...</label><br>
           <textarea id="viesti"></textarea><br>
-          <button class="nappula" onclick="lahetaViesti()">Lähetä</button>
+          <button type="button" class="nappula" onclick="lahetaViesti(luoViestiOlio("moimoi", "Sanniina")">Lähetä</button>
+          <div class="viestiOlio">
+            <div id="viestit" class="viestinOtsikko">
+              <h2>Viestit</h2>
+            </div>
+          </div>
         </div>
       </form>
 
-      <div class="viestiOlio">
-        <div id="viestit" class="viestinOtsikko">
-          <h2>Viestit</h2>
-        </div>
-      </div>
+
 
       <!-- <form>
         <div class="viestinTyyli">
@@ -87,7 +88,7 @@ function stickyFunction() {
   }
 }
 
-//responsiivisuus mobiilille
+// Responsiivisuus mobiilille
 function resFunction() {
     var x = document.getElementById("myNav");
     if (x.className === "topnav") {

@@ -133,7 +133,7 @@ function lahetaViesti(viestiOlio) {
 
   var lampoNappula = document.createElement("button");
   lampoNappula.setAttribute("class", "lampoNappula");
-  lampoNappula.setAttribute("onClick", "lahetaLampoa(this.numero)");
+  lampoNappula.setAttribute("onClick", "lahetaLampoa(viestiOlio.numero)");
   lampoNappula.innerHTML = "Lähetä lämpöä!";
   //lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
 
@@ -185,9 +185,9 @@ function lahetaViesti(viestiOlio) {
       document.getElementById("kommenttinappulaId" + viestiOlio.numero).click();
     }
   });
-  console.log("6. Päästiin funktion loppuun. Hurraa")
+  console.log("6. Päästiin funktion loppuun. Hurraa!!")
 
-  return viesti;
+  viestiJSONiin(viestiOlio)
 
 }
 
