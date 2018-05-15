@@ -9,8 +9,9 @@ h1 {
 
 .kuva {
   position: absolute;
-  left: 33%;
-  width: 33%;
+  left: 45%;
+  width: 100px;
+  height: auto;
 }
 
 .käyttäjänimi {
@@ -24,25 +25,32 @@ h1 {
 }
 
 .setting {
-  font-size: 18px;
-  width: 460px;
+  font-size: 24px;
+  /* width: 460px;
   padding: 5px;
-  float: right;
+  float: right; */
   border: 10px;
   padding-top: 20px;
 }
 
 .asetukset {
   position: absolute;
-  width: 4%;
+  width: 3%;
   left: 41%;
-  float: left;
+  float: rigth;
 }
 
-.kirjaudu_ulos {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #c3c388;
-    margin-left: 10px;
-    font-family: 'Bellefair', serif;
+.ulos {
+      background-color: #ddc0a1;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-family: 'Bellefair', serif;
+}
+
+.ulos:hover{
+  opacity: 0.8;
 }
