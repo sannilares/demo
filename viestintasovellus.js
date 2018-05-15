@@ -139,7 +139,7 @@ var database = firebase.database();
 //     numero: viestiOlio.numero,
 //     kommentit: viestiOlio.kommentit
 //   });
-//   json = JSON.parse(haeJSON());
+//   json = JSON.parse(haeJson());
 // }
 
 // Tämä funktio lisää uuden viestiolion firebaseen
@@ -160,9 +160,9 @@ function viestiJSONiin(viestiOlio) {
       numero: viestiOlio.numero,
       kommentit: viestiOlio.kommentit
     });
-    json = JSON.parse(haeJSON());
+    json = JSON.parse(haeJson());
     // xmlhttp.send(viestiOlio);
-    // viestiObjekti = haeJson();
+    viestiObjekti = haeJson();
 };
 
 // Tämä funktio lisaa viestin näkyville sivulle, ja luo viestille kommentointi ja lämmön lähetys mahdollisuudet
@@ -276,7 +276,7 @@ function lahetaKommentti(kommenttiOlio) {
       aika: kommenttiOlio.aika,
     }]
   });
-  //viestiObjekti = JSON.parse(haeJSON());
+  //viestiObjekti = JSON.parse(haeJson());
 }
 
 // Alla vanhoja testauksia erinäisille asioille...
