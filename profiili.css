@@ -36,12 +36,16 @@ h1 {
   padding-top: 20px;
 }
 
-/* .asetukset {
-  position: absolute;
-  width: 3%;
-  left: 41%;
-  float: rigth;
-} */
+
+/* Kutsu kaveri -nappula */
+.kaveri {
+      background-color: #ddc0a1;
+      color: white;
+      padding: 5px 5px;
+      cursor: pointer;
+      font-family: 'Bellefair', serif;
+      font-size: 14px;
+}
 
 /* kirjaudu ulos */
 .ulos {
@@ -53,6 +57,7 @@ h1 {
       cursor: pointer;
       width: 20%;
       font-family: 'Bellefair', serif;
+      font-size: 20px;
 }
 
 .ulos:hover{
