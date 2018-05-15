@@ -25,6 +25,12 @@
   firebase.initializeApp(config);
 </script>
   <script src="viestintasovellus.js"></script>
+
+<script>
+  window.onload = function() {
+    document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi")
+  }
+</script>
 </head>
 
 <body>
