@@ -90,6 +90,7 @@ function luoViestiOlio(teksti, lahettaja) {
 var database = firebase.database();
 
 function viestiJSONiin(viestiOlio) {
+  console.log("7. Viestiä ainakin yritetään puskea firebaseen");
   firebase.database().ref(viestiOlio.numero).set({
     viesti: viestiOlio.viesti,
     lampo: viestiOlio.lampo,
@@ -98,8 +99,8 @@ function viestiJSONiin(viestiOlio) {
     numero: viestiOlio.numero,
     kommentit: viestiOlio.kommentit
   });
+  console.log("8. Ja ehkä nyt jotain pitäisi jo tapahtua, muttei tapahtunut... Hmmm...");
   //viestiObjekti = JSON.parse(haeJSON());
-  return "moi";
 }
 
 // Tämä funktio lisaa viestin näkyville sivulle, ja luo viestille kommentointi ja lämmön lähetys mahdollisuudet
@@ -152,7 +153,7 @@ function lahetaViesti(viestiOlio) {
   var kommenttiNappula = document.createElement("button");
   kommenttiNappula.innerHTML = "Kommentoi";
   kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
-  //kommenttiNappula.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
+  kommenttiNappula.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
   console.log("2. Kaikki tarvittava on saatu luotua")
 
   viesti.appendChild(viestiTeksti);
@@ -214,56 +215,79 @@ function lahetaViesti(viestiOlio) {
 
 //KUN VIESTIN LÄHETTÄMINEN TOIMII, MIETI MITÄ HELVETTIÄ TÄSSÄ PITÄISI TEHDÄ!!!!:
 // Tsemppii me! Pystytte siihen ihan varmast!! <3
-function luoKommenttiOlio(teksti, lahettaja, mihinViestiin) {
-  var uusOlio = {viesti: teksti, nimi: lahettaja, aika: new Date() };
-  return [uusOlio, mihinViestiin.numero];
+
+// Funktio luo kommenttiOlion
+function luoKommenttiOlio(teksti, lahettaja) {
+  this.viesti = teksti;
+  this.nimi = lahettaja;
+  this.aika = new Date();
+  //this.numero = ???;
+  return {viesti, nimi, aika};
 }
 
-//Tämä funktio lisää kommentin valittuun viestiolioon
-function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
-    var xmlhttp = new XMLHttpRequest();
-    //Valitaan oikea url listan koon mukaisesti
-    var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/kommentit.json";
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-        //viestiObjekti = JSON.parse(this.responseText);
-      }
-    };
-    //Lisätään viesti firebaseen
-    xmlhttp.open("PUT", url, true);
-    xmlhttp.send(kommenttiOlio[0]);
+// Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
+function kommentoi(kommenttiOlio) {
+  firebase.database().ref(viestiOlio.numero).set({
+    kommentti: [{
+      viesti: kommenttiOlio.viesti,
+      nimi: kommenttiOlio.nimi,
+      aika: kommenttiOlio.aika,
+    }]
+  });
+  //viestiObjekti = JSON.parse(haeJSON());
 }
+
+// Alla vanhoja testauksia erinäisille asioille...
+// function luoKommenttiOlio(teksti, lahettaja, mihinViestiin) {
+//   var uusOlio = {viesti: teksti, nimi: lahettaja, aika: new Date() };
+//   return [uusOlio, mihinViestiin.numero];
+// }
+
+// //Tämä funktio lisää kommentin valittuun viestiolioon
+// function kommentoi(kommenttiOlio, int) {      //MIETI INT!!!!!!!!
+//     var xmlhttp = new XMLHttpRequest();
+//     //Valitaan oikea url listan koon mukaisesti
+//     var url = "https://maalampo-some-demo.firebaseio.com/uutiset/" + int + "/kommentit.json";
+//     xmlhttp.onreadystatechange = function() {
+//       if (this.readyState == 4 && this.status == 200) {
+//         console.log(this.responseText);
+//         //viestiObjekti = JSON.parse(this.responseText);
+//       }
+//     };
+//     //Lisätään viesti firebaseen
+//     xmlhttp.open("PUT", url, true);
+//     xmlhttp.send(kommenttiOlio[0]);
+// }
 
 
 // MIETI MYÖS, MITÄ IHMETTÄ TÄSSÄ TAPAHTUU... PITÄISIKÖ TÄÄ TOTEUTTAA KAHDELLE ERI SIVULLE? RIITTÄÄKÖ LISTAN JÄRJESTÄMINEN JÄRJESTÄMISEKSI?
 // Jos tää menee liian monimutkaseks, nii älkää stressatko tästä vaan tehkää muut jutut hyvin :))
 
-// Tämä funktio järjestää viestit väärinpäin olevan listan mukaisesti, ts. uusin ensin
-function jarjestaAjankohtaiset() {
-  return lista.reverse();
-}
-
-//Tämä funkio järjestää viestit lämmön määrän mukaisesti, isoin numero ensin
-function jarjestaSuosituin() {
-
-
-
-
-
-
-
-  // var jarjestus = viestiObjekti;
-  // var x;
-  // for (x = 0; x < viestiObjekti.length; x++) {
-  //   jarjestus[x] = viestiObjekti[x].lampo;
-  // }
-  // var c = jarjestus.map(function(e, i) {
-  //   return [e, viestiObjekti[i]];
-  // });
-  // var oikein = c.sort().reverse;
-  // return oikein.values;
-}
+// // Tämä funktio järjestää viestit väärinpäin olevan listan mukaisesti, ts. uusin ensin
+// function jarjestaAjankohtaiset() {
+//   return lista.reverse();
+// }
+//
+// //Tämä funkio järjestää viestit lämmön määrän mukaisesti, isoin numero ensin
+// function jarjestaSuosituin() {
+//
+//
+//
+//
+//
+//
+//
+//   // var jarjestus = viestiObjekti;
+//   // var x;
+//   // for (x = 0; x < viestiObjekti.length; x++) {
+//   //   jarjestus[x] = viestiObjekti[x].lampo;
+//   // }
+//   // var c = jarjestus.map(function(e, i) {
+//   //   return [e, viestiObjekti[i]];
+//   // });
+//   // var oikein = c.sort().reverse;
+//   // return oikein.values;
+// }
 
 //Tämä funkio järjestää viestit kommenttien määrän mukaisesti, isoin numero ensin
 // function jarjestaKeskustelu() {
