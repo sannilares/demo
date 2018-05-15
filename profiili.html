@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Lataa nimen localStoragesta -->
     <script>
       window.onload = function() {
         document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi")
@@ -17,20 +18,20 @@
     </script>
 </head>
 <body>
-<div class="parallax">
-  <div class="otsikko">MAALÄMPÖ</div>
-  <div class="alaOtsikko" id = "testi">Alaotsikko </div>
-  <div class="kuultavuus">
-    <div class="topnav" id="myNav">
-      <a class="normal_link" href="ohjeet.html">Apua?</a>
-      <a class="normal_link" href="demo.index.html">Ajankohtaiset</a>
-      <a class="normal_link" href="demo.index.html">Lämpimämmät</a>
-      <a class="thispage" href="profiili.html">Profiili</a>
-      <a class="icon" href="javascript:void(0);"  onclick="resFunction()">
-        <i class="fa fa-bars" style="font-size: 16px;"></i>
-      </a>
-    </div>
-    <div class="peittavampiKuultavuus">
+  <div class="parallax">
+    <div class="otsikko">MAALÄMPÖ</div>
+    <div class="alaOtsikko" id = "testi">Alaotsikko </div>
+    <div class="kuultavuus">
+      <div class="topnav" id="myNav">
+        <a class="normal_link" href="ohjeet.html">Apua?</a>
+        <a class="normal_link" href="demo.index.html">Ajankohtaiset</a>
+        <a class="normal_link" href="demo.index.html">Lämpimämmät</a>
+        <a class="thispage" href="profiili.html">Profiili</a>
+        <a class="icon" href="javascript:void(0);"  onclick="resFunction()">
+          <i class="fa fa-bars" style="font-size: 16px;"></i>
+        </a>
+      </div>
+      <div class="peittavampiKuultavuus">
 
           <h1>
             Oma profiili
@@ -44,33 +45,28 @@
               <div class="käyttäjänimi" id="nimi">Nimi</div>
               <div class="lämmönmäärä">Lämmön määrä: 8</div>
 
-              <div class="setting">
-                <!-- <img src="settings.png" alt="Asetukset" class="asetukset"></img> -->
-                Asetukset
-              </div>
+              <div class="setting">Asetukset</div>
 
-                <form>
-                  <label for="kaverii">Kutsu kaveri</label><br>
-                   <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
-                  <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
-                   <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
-                  <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
-                </form>
-
-
+              <!-- Kutsu kaveri käyttämään palvelua, ei lähetä vielä oikeasti spostia -->
+              <form>
+                <label for="kaverii">Kutsu kaveri</label><br>
+                 <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
+                <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
+                 <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
+                <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
+              </form>
             </div>
 
+          <!-- Kirjaudu ulos -> palaa sisäänkirjautumiseen -->
           <div class="kirjaudu_ulos">
             <button type="button" class="ulos"
                     onclick = "location.href='login.html'"
                     >Kirjaudu ulos</button>
           </div>
+      </div>
+    </div>
+  </div>
 
-</div>
-</div>
-</div>
-
-<!-- Navin stickyn funktiot -->
 <script>
   // Navi jää yläs "kiinni"
   window.onscroll = function() {stickyFunction()};
@@ -97,14 +93,13 @@
   }
   </script>
 
-<footer>
-  <p><br>Oneglematilanteissa ota yhteyttä: <br>maalämpö@gmail.com<br></p>
-  <a href="http://www.st1.fi/"><img src="ST1.png" alt="ST1" style="width: 5%;"></a>
-  <p>Yhteistyössä: Aalto-yliopisto<br></p>
-  <a href="https://twitter.com/login"><img src="twitter.png" alt="Twitter" style="width: 2%;"></a>
-  <a href="https://www.instagram.com/?hl=fi"><img src="instagram.png" alt="Instagram" style="width: 2%;"></a>
-  <a href="https://www.facebook.com/"><img src="facebook.png" alt="Facebook" style="width: 2%;"></a><br><br><br>
-</footer>
+  <footer>
+    <p><br>Oneglematilanteissa ota yhteyttä: <br>maalämpö@gmail.com<br></p>
+    <a href="http://www.st1.fi/"><img src="ST1.png" alt="ST1" style="width: 5%;"></a>
+    <p>Yhteistyössä: Aalto-yliopisto<br></p>
+    <a href="https://twitter.com/login"><img src="twitter.png" alt="Twitter" style="width: 2%;"></a>
+    <a href="https://www.instagram.com/?hl=fi"><img src="instagram.png" alt="Instagram" style="width: 2%;"></a>
+    <a href="https://www.facebook.com/"><img src="facebook.png" alt="Facebook" style="width: 2%;"></a><br><br><br>
+  </footer>
 </body>
-
 </html>
