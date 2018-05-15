@@ -1,18 +1,10 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset = "utf-8">
     <link rel = "stylesheet" type = "text/css" href = "login.css">
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
 </head>
-
-<script type="text/javascript">
-    var julkasunimi = "Sini" ;
-    function store() {
-      localStorage.setItem("etunimi", julkasunimi);
-    }
-</script>
 
 <body>
 <!-- Avaa kirjautumissivun -->
@@ -24,34 +16,41 @@
           class="sulje" title="Sulje moduuli">&times;</span>
 
     <!-- Kirjautumismoduuli -->
-    <form class="moduulin animaatio" action="/action_page.php">
+    <form class="moduulin animaatio" action="demo.index.html" onsubmit="store()">
       <div class="kuva">
         <img src="KUVA.png" alt="Kuva" class="kuva">
       </div>
 
-      <div class="kirjautuminen" onsubmit="callme()">
-        <label for="käyttis"><b>Käyttäjänimi</b></label>
-        <input type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="käyttäjänimi" required>
+        <div class="kirjautuminen">
+          <label for="käyttis"><b>Käyttäjänimi</b></label>
+          <input id="nimi" type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="nimi" required>
 
-        <label for="salasana"><b>Salasana</b></label>
-        <input type="password" placeholder="Syötä salasanasi" name="password" required>
+          <label for="salasana"><b>Salasana</b></label>
+          <input type="password" placeholder="Syötä salasanasi" name="password" required>
 
-        <button type="button"
-                onclick="window.location.href='demo.index.html'"
-                class = "kirjaudu">Kirjaudu sisään</button>
+          <button type="submit" class="kirjaudu"
+                  >Kirjaudu sisään</button>
 
-        <label>
-            <input type="checkbox" checked="checked" name="muista">Muista minut
-        </label>
-      </div>
+          <label>
+              <input type="checkbox" checked="checked" name="muista">Muista minut
+          </label>
+        </div>
+      </form>
 
       <div class="container">
-        <button type="button"
+        <button type="button" class="takaisin"
                 onclick="document.getElementById('kirjautumissivu').style.display='none'"
-                class="takaisin">Takaisin</button>
+                >Takaisin</button>
         <span class="salis">Unohtuiko <a href="#">salasana?</a></span>
       </div>
-    </form>
   </div>
+
+  <script type="text/javascript">
+      function store() {
+        var julkasunimi = document.getElementById("nimi").value;
+        localStorage.setItem('etunimi', julkasunimi);
+      }
+  </script>
+
  </body>
 </html>
