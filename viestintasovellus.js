@@ -107,7 +107,7 @@ function lahetaViesti(viestiOlio) {
 
   var viesti = document.createElement("div");
   viesti.setAttribute("class", "viesti");
-  viesti.setAttribute("id", viestiOlio.numero);
+  // viesti.setAttribute("id", viestiOlio.numero);
 
   var viestiTeksti = document.createElement("p");
   viestiTeksti.setAttribute("class", "viestiTeksti");
@@ -128,28 +128,29 @@ function lahetaViesti(viestiOlio) {
   lampo.setAttribute("class", "lampo");
   var tek = document.createTextNode(viestiOlio.lampo);
   lampo.appendChild(tek);
+    //lampo.setAttribute("id", "lampoId" + viestiOlio.numero);
 
-  var kommentit = document.createElement("p");
+  var kommentit = document.createElement("div");
   kommentit.setAttribute("class", "kommentit");
-  var te = document.createTextNode(viestiOlio.kommentit);
-  kommentit.appendChild(te);
+  // var te = document.createTextNode(viestiOlio.kommentit);
+  // kommentit.appendChild(te);
+  kommentit.setAttribute("id", "kommenttiId" + viestiOlio.numero);
 
   var lampoNappula = document.createElement("button");
   lampoNappula.setAttribute("class", "lampoNappula");
-  //lampoNappula.setAttribute("id", "kes" + viestiOlio.numero);   // Kes???
   lampoNappula.setAttribute("onClick", "lahetaLampoa(this.numero)");
   lampoNappula.innerHTML = "Lähetä lämpöä!";
+  //lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
 
   var kirjoitaKommentti = document.createElement("textarea");
   kirjoitaKommentti.innerHTML.value = "Haluatko kommentoida?";
   kirjoitaKommentti.setAttribute("class", "kirjoitaKommentti");
   // commentInput.setAttribute("rows", "4");
   // commentInput.setAttribute("cols", "50");
-  //commentInput.setAttribute("id", "ments" + mes.id);
 
   var kommenttiNappula = document.createElement("button");
   kommenttiNappula.innerHTML = "Kommentoi";
-  // commentButton.setAttribute("id", "ts" + mes.id);
+  kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
   kommenttiNappula.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
 
   viesti.appendChild(viestiTeksti);
@@ -161,6 +162,22 @@ function lahetaViesti(viestiOlio) {
   viesti.appendChild(kirjoitaKommentti);
   viesti.appendChild(kommenttiNappula);
 
+  var noutoHTML = document.getElementById("viestit");
+
+  if (noutoHTML.hasChildNodes()) {
+    noutoHTML.insertBefore(viesti,  haeViesti(viestiObjekti.length, console.log));
+  } else {
+    noutoHTML.appendChild(viesti);
+  }
+
+  document.getElementById("kommenttiId" + viestiOlio.numero).addEventListener("keyup", function(event) {
+    event.preventDefault();
+  if (event.keyCode === 13) {
+    document.getElementById("kommenttinappulaId" + viestiOlio.numero).click();
+   }
+  });
+
+  return "moi";
 
 }
 
