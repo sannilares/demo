@@ -1,3 +1,41 @@
+window.onload = function() {
+
+  /* Saves JSON content from Firebase into variable json, for easy and fast access.
+     Nullifies need for multiple requests to database server,
+     providing all data in one go. */
+  var json = JSON.parse(getJSON());   //HYVÄ
+
+  /* Handles visibility for messages and comments from Firebase.
+     Checks for possible "null" and "undefined" before utilising for-loops, Message-
+     and Comment-classes and functions sendMessage() and sendComment().*/
+  if (json !== null) {      //HYVÄ
+    var JSONid = json.length;       //MIETI
+  for (i = 0; i < json.length; i++) {       //MIETI
+    lahetaViesti(luoViestiOlio(json[i].viesti, json[i].lampo, json[i].nimi, json[i].aika, json[i].numero, json[i].kommentit)); //HYVÄ
+    if (json[i].kommentit !== undefined) {      //MITEI
+      for (j = 0; j < json[i].kommentit.length; j++) {          //MIETI
+        lahetaKommentti(luoKommenttiOlio(json[i].viesti, json[i].nimi, json[i].aika));  //HYVÄ
+        }
+    }
+  }
+} else { /* In an event where there are no messages, sets the next indice where a message would be stored in Firebase as 0. */
+  JSONid = 0;         //MIETI
+}
+
+/* Adds functionality to buttons.Prevents default to avoid reloading page unnecessarily. */
+  document.getElementById("viesti").addEventListener("keyup", function(event) {     //OISKOHAN?
+   // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
+   event.preventDefault();
+   // Numero 13 vastaa näppäimistön enter-nappia
+   if (event.keyCode === 13) {
+     // Klikatessa ID:n osoittama button triggeröityy
+     document.getElementById("button").click();           //MIETI
+   }
+  });
+  document.getElementById("nextbutton").addEventListener("click", function(event) {     //MIETI
+    event.preventDefault();
+    //nextFunction();       //EI NÄIN!!!!
+  });
 
 // Objekti johon viestit haetaan Firebasesta
 var viestiObjekti = "";
@@ -100,7 +138,7 @@ function viestiJSONiin(viestiOlio) {
     kommentit: viestiOlio.kommentit
   });
   console.log("8. Ja ehkä nyt jotain pitäisi jo tapahtua, muttei tapahtunut... Hmmm...");
-  //viestiObjekti = JSON.parse(haeJSON());
+  json = JSON.parse(haeJSON());
 }
 
 // Tämä funktio lisaa viestin näkyville sivulle, ja luo viestille kommentointi ja lämmön lähetys mahdollisuudet
@@ -226,7 +264,7 @@ function luoKommenttiOlio(teksti, lahettaja) {
 }
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
-function kommentoi(kommenttiOlio) {
+function lahetaKommentti(kommenttiOlio) {
   firebase.database().ref(viestiOlio.numero).set({
     kommentti: [{
       viesti: kommenttiOlio.viesti,
