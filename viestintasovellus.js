@@ -128,7 +128,8 @@ function luoViestiOlio(teksti) {
   this.viesti = teksti;
   this.lampo = "0";
   this.nimi = localStorage.getItem("etunimi");
-  this.aika = new Date();
+  var d = new Date();
+  this.aika = d.toLocaleTimeString();
   this.numero = viestiObjekti.length;
   this.kommentit = [{}];
   return {viesti, lampo, nimi, aika, numero, kommentit};
@@ -260,7 +261,8 @@ function lahetaViesti(viestiOlio) {
 function luoKommenttiOlio(teksti) {
   this.viesti = teksti;
   this.nimi = localStorage.getItem("etunimi");
-  this.aika = new Date();
+  var d = new Date();
+  this.aika = d.toLocaleTimeString();
   return {viesti, nimi, aika};
 }
 
