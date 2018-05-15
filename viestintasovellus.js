@@ -38,20 +38,26 @@ var lista = haeJson();
 
 // Tämä funktio hakee viestit
 function haeJson() {
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
 
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      // function funktiokutsu(viestiObjekti) {     //MIETI TÄMÄ!!!!!
-      // };
-      console.log(this.responseText);
-      viestiObjekti = JSON.parse(this.responseText);
-    }
-  };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
-  return xmlhttp.responseText;
+  var database = firebaseAdmin.database();
+var ref = database.ref("uutiset");
+ref.orderByChild("height").on("child_added", function(snapshot) {
+  console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
+});
+  // var xmlhttp = new XMLHttpRequest();
+  // var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
+  //
+  // xmlhttp.onreadystatechange = function() {
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     // function funktiokutsu(viestiObjekti) {     //MIETI TÄMÄ!!!!!
+  //     // };
+  //     console.log(this.responseText);
+  //     viestiObjekti = JSON.parse(this.responseText);
+  //   }
+  // };
+  // xmlhttp.open("GET", url, true);
+  // xmlhttp.send();
+  // return xmlhttp.responseText;
 }
 
 
