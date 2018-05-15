@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="demotyyli.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Firebasen antama koodi sen käyttämiseksi -->
   <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
@@ -32,11 +33,14 @@
   <div class="otsikko">MAALÄMPÖ</div>
   <div class="alaOtsikko" id = "testi">Alaotsikko </div>
   <div class="kuultavuus">
-    <div id="navbar">
+    <div class="topnav" id="myNav">
         <a class="normal_link" href="ohjeet.html">Apua?</a>
         <a class="thispage" href="demo.index.html">Ajankohtaiset</a>
         <a class="normal_link" href="demo.index.html">Lämpimämmät</a>
         <a class="normal-link" href="profiili.html">Profiili</a>
+        <a href="javascript:void(0);" class="icon" onclick="resFunction()">
+          <i class="fa fa-bars" style="font-size: 16px;"></i>
+        </a>
     </div>
     <div class="peittavampiKuultavuus">
       <form>
@@ -68,20 +72,30 @@
 </div>
 
 
-<!-- Navin stickyn funktiot -->
 <script>
-  window.onscroll = function() {myFunction()};
+// Navi jää yläs "kiinni"
+window.onscroll = function() {stickyFunction()};
 
-  var navbar = document.getElementById("navbar");
-  var sticky = navbar.offsetTop;
+var navbar = document.getElementById("myNav");
+var sticky = navbar.offsetTop;
 
-  function myFunction() {
-    if (window.pageYOffset >= sticky) {
-      navbar.classList.add("sticky")
-    } else {
-      navbar.classList.remove("sticky");
-    }
+function stickyFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
   }
+}
+
+//responsiivisuus mobiilille
+function resFunction() {
+    var x = document.getElementById("myNav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
 </script>
 </body>
 </html>
