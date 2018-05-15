@@ -1,7 +1,7 @@
 window.onload = function() {
 
   //Tallentaa JSON:in firebasesta muuttujaan json
-  var json = JSON.parse(getJSON());
+  var json = JSON.parse(haeJSON());
 
   // Viestien ja kommenttien näkyvyys firebasessa
   for (i = 0; i < json.length; i++) {
@@ -241,7 +241,7 @@ function luoKommenttiOlio(teksti) {
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
-  firebase.database().ref("uutiset/" + viestiOlio.numero).set({
+  firebase.database().ref("uutiset/" + viestiOlio.numero - 1).set({
     kommentit: viestiOlio.kommentit[{
       viesti: kommenttiOlio.viesti,
       nimi: kommenttiOlio.nimi,

@@ -53,7 +53,7 @@
         <div class="postausTyyli">
           <label for="viesti"><br>Kirjoita...</label><br>
           <textarea id="viesti" rows="4" cols="60"></textarea><br>
-          <button type="button" id="viestiNappula" class="nappula" onclick="lahetaViesti(luoViestiOlio("moimoi")">Lähetä</button>
+          <button type="button" id="viestiNappula" class="nappula" onclick="lahetaViesti(luoViestiOlio(document.getElementById('viesti').value))">Lähetä</button>
           <div class="viestiOlio">
             <div id="viestit" class="viestinOtsikko">
               <h2>Viestit</h2>
