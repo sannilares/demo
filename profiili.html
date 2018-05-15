@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="profiili.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Lataa nimen localStoragesta -->
+<!-- Lataa nimen localStoragesta var x = <i class="em em-person_with_blond_hair"></i> -->
     <script>
       window.onload = function() {
         document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi")
@@ -42,10 +43,10 @@
           <br><br><br><br><br>
 
           <div class="tiedot">
-              <div class="käyttäjänimi" id="nimi">Nimi</div>
-              <div class="lämmönmäärä">Lämmön määrä: 8</div>
+              <div class="käyttäjänimi" id="nimi">  Nimi</div>
+              <div class="lämmönmäärä"><i class="em em-fire"></i>  Lämmön määrä: 8</div>
 
-              <div class="setting">Asetukset</div>
+              <div class="setting"><i class="em em-hammer_and_wrench"></i>  Asetukset</div>
 
               <!-- Kutsu kaveri käyttämään palvelua, ei lähetä vielä oikeasti spostia -->
               <form>
