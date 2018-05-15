@@ -104,6 +104,7 @@ function viestiJSONiin(viestiOlio) {
 
 // Tämä funktio lisaa viestin näkyville sivulle, ja luo viestille kommentointi ja lämmön lähetys mahdollisuudet
 function lahetaViesti(viestiOlio) {
+  console.log("1. Päästiin viestiOlion luomisesta lahetaViestiin saakka")
 
   var viesti = document.createElement("div");
   viesti.setAttribute("class", "viesti");
@@ -130,28 +131,29 @@ function lahetaViesti(viestiOlio) {
   lampo.appendChild(tek);
     //lampo.setAttribute("id", "lampoId" + viestiOlio.numero);
 
-  var kommentit = document.createElement("div");
-  kommentit.setAttribute("class", "kommentit");
-  // var te = document.createTextNode(viestiOlio.kommentit);
-  // kommentit.appendChild(te);
-  kommentit.setAttribute("id", "kommenttiId" + viestiOlio.numero);
-
   var lampoNappula = document.createElement("button");
   lampoNappula.setAttribute("class", "lampoNappula");
   lampoNappula.setAttribute("onClick", "lahetaLampoa(this.numero)");
   lampoNappula.innerHTML = "Lähetä lämpöä!";
   //lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
 
+  var kommentit = document.createElement("div");
+  kommentit.setAttribute("class", "kommentit");
+  // var te = document.createTextNode(viestiOlio.kommentit);
+  // kommentit.appendChild(te);
+  kommentit.setAttribute("id", "kommenttiId" + viestiOlio.numero);
+
   var kirjoitaKommentti = document.createElement("textarea");
   kirjoitaKommentti.innerHTML.value = "Haluatko kommentoida?";
-  kirjoitaKommentti.setAttribute("class", "kirjoitaKommentti");
-  // commentInput.setAttribute("rows", "4");
-  // commentInput.setAttribute("cols", "50");
+  kirjoitaKommentti.setAttribute("id", "kirjoitaKommenttiId" + viestiOlio.numero);
+  kirjoitaKommentti.setAttribute("rows", "4");
+  kirjoitaKommentti.setAttribute("cols", "50");
 
   var kommenttiNappula = document.createElement("button");
   kommenttiNappula.innerHTML = "Kommentoi";
   kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
-  kommenttiNappula.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
+  //kommenttiNappula.setAttribute("onClick", "kommentoi(?????????, this.numero)");     //????????
+  console.log("2. Kaikki tarvittava on saatu luotua")
 
   viesti.appendChild(viestiTeksti);
   viesti.appendChild(lahettaja);
@@ -161,23 +163,31 @@ function lahetaViesti(viestiOlio) {
   viesti.appendChild(kommentit);
   viesti.appendChild(kirjoitaKommentti);
   viesti.appendChild(kommenttiNappula);
+  console.log("3. Kaikki tarvittava on appendattu")
 
-  var noutoHTML = document.getElementById("viestit");
+  var aa = document.getElementById("viestit");
+  console.log("4. aa-muuttuja on nyt luotu")
 
-  if (noutoHTML.hasChildNodes()) {
-    noutoHTML.insertBefore(viesti,  haeViesti(viestiObjekti.length, console.log));
+  if (aa.hasChildNodes()) {
+    aa.insertBefore(viesti, haeViesti(viestiObjekti.length, console.log));
   } else {
-    noutoHTML.appendChild(viesti);
+    aa.appendChild(viesti);
   }
+  console.log("5. random if-lausekin saattoi jopa juuri ja juuri toteutua")
 
+  // Kun käyttäjä painaa nappia, alla oleva tapahtunee
   document.getElementById("kommenttiId" + viestiOlio.numero).addEventListener("keyup", function(event) {
+    // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
     event.preventDefault();
-  if (event.keyCode === 13) {
-    document.getElementById("kommenttinappulaId" + viestiOlio.numero).click();
-   }
+    // Numero 13 vastaa näppäimistön enter-nappia
+    if (event.keyCode === 13) {
+      // Klikatessa ID:n osoittama elementti triggeröityy
+      document.getElementById("kommenttinappulaId" + viestiOlio.numero).click();
+    }
   });
+  console.log("6. Päästiin funktion loppuun. Hurraa")
 
-  return "moi";
+  return viesti;
 
 }
 
