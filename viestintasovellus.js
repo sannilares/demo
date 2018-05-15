@@ -240,7 +240,7 @@ function luoKommenttiOlio(teksti) {
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
   firebase.database().ref(viestiOlio.numero).set({
-    kommentti: viestiOlio.kommentti: [{
+    kommentit: viestiOlio.kommentit[{
       viesti: kommenttiOlio.viesti,
       nimi: kommenttiOlio.nimi,
       aika: kommenttiOlio.aika,
