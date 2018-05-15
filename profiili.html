@@ -8,6 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+      window.onload = function() {
+        document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi")
+        document.getElementById("nimi").innerHTML = localStorage.getItem("etunimi")
+      }
+    </script>
 </head>
 <body>
 <div class="parallax">
@@ -23,26 +30,43 @@
         <i class="fa fa-bars" style="font-size: 16px;"></i>
       </a>
     </div>
+    <div class="peittavampiKuultavuus">
+
+          <h1>
+            Oma profiili
+          </h1>
+
+          <img src="avatar_hahmo.png" alt="Avatar" class="kuva"> </img>
+
+          <br><br><br><br><br><br><br><br><br>
+
+          <div class="tiedot">
+              <div class="käyttäjänimi" id="nimi">Nimi</div>
+              <div class="lämmönmäärä">Lämmön määrä: 8</div>
+
+              <div class="setting">
+                <img src="settings.png" alt="Asetukset" class="asetukset"></img>
+                Asetukset
+              </div>
+
+                <form>
+                  <label for="kaverii">Kutsu kaveri</label><br>
+                   <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
+                  <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
+                   <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
+                  <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
+                </form>
 
 
-<h1>
-  Oma profiili
-</h1>
+            </div>
 
-<img src="avatar_hahmo.png" alt="Avatar" id="kuva">
+          <div class="kirjaudu_ulos">
+            <button type="button" class="ulos"
+                    onclick="document.getElementById('kirjautumissivu').style.display='none'"
+                    >Kirjaudu ulos</button>
+          </div>
 
-<p>
-  Jotain siistii jee öö voi vide
-</p>
-
-  <form>
-    <label for="kaverii">Kutsu kaveri</label><br>
-     <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
-    <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
-     <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
-    <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
-  </form>
-
+</div>
 </div>
 </div>
 
