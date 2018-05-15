@@ -38,6 +38,7 @@ var lista = haeJson();
 
 // Tämä funktio hakee viestit
 function haeJson() {
+<<<<<<< HEAD
   var xmlhttp = new XMLHttpRequest();
   var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
 
@@ -52,6 +53,28 @@ function haeJson() {
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
   return xmlhttp.responseText;
+=======
+
+  var database = firebaseAdmin.database();
+var ref = database.ref("uutiset");
+ref.orderByChild("height").on("child_added", function(snapshot) {
+  console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
+});
+  // var xmlhttp = new XMLHttpRequest();
+  // var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
+  //
+  // xmlhttp.onreadystatechange = function() {
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     // function funktiokutsu(viestiObjekti) {     //MIETI TÄMÄ!!!!!
+  //     // };
+  //     console.log(this.responseText);
+  //     viestiObjekti = JSON.parse(this.responseText);
+  //   }
+  // };
+  // xmlhttp.open("GET", url, true);
+  // xmlhttp.send();
+  // return xmlhttp.responseText;
+>>>>>>> c9273227f4d3579dcf99dbc56144675b3e6e2a6b
 }
 
 
@@ -123,7 +146,11 @@ function viestiJSONiin(viestiOlio) {
 
     //Lisätään viesti firebaseen
     xmlhttp.open("POST", url, true);     // HUOM. Send:iä käyttämällä tulee cross-origin virheilmoitus
+<<<<<<< HEAD
     firebase.database().ref(viestiOlio.numero).set({
+=======
+    firebase.database().ref("uutiset/" + viestiOlio.numero).set({
+>>>>>>> c9273227f4d3579dcf99dbc56144675b3e6e2a6b
       viesti: viestiOlio.viesti,
       lampo: viestiOlio.lampo,
       nimi: viestiOlio.nimi,
@@ -239,8 +266,13 @@ function luoKommenttiOlio(teksti) {
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
+<<<<<<< HEAD
   firebase.database().ref(viestiOlio.numero).set({
     kommentti: viestiOlio.kommentti: [{
+=======
+  firebase.database().ref("uutiset/" + viestiOlio.numero).set({
+    kommentit: viestiOlio.kommentit[{
+>>>>>>> c9273227f4d3579dcf99dbc56144675b3e6e2a6b
       viesti: kommenttiOlio.viesti,
       nimi: kommenttiOlio.nimi,
       aika: kommenttiOlio.aika,
