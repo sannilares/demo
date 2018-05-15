@@ -51,12 +51,15 @@ function haeJson() {
   var xmlhttp = new XMLHttpRequest();
   var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
 
-  // xmlhttp.onreadystatechange = function() {
-  //   if (this.readyState == 4 && this.status == 200) {
-  //     console.log(this.responseText);
-  //     viestiObjekti = JSON.parse(this.responseText);
-  //   }
-  // };
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      function funktiokutsu(viestiObjekti) {
+        
+      }
+      console.log(this.responseText);
+      viestiObjekti = JSON.parse(this.responseText);
+    }
+  };
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
   return xmlhttp.responseText;
@@ -267,6 +270,7 @@ function luoKommenttiOlio(teksti) {
   return {viesti, nimi, aika};
 }
 
+// MIHIN VIESTIIN HEMMETTI SOIKOON????
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio) {
   firebase.database().ref(viestiOlio.numero).set({
