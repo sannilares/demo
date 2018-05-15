@@ -28,13 +28,12 @@ window.onload = function() {
   //   // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
   //   event.preventDefault();
   // });
+  haeJson();
 }
 
 
 // Objekti johon viestit haetaan Firebasesta
 var viestiObjekti = "";
-
-var lista = haeJson();
 
 // Tämä funktio hakee viestit
 function haeJson() {
@@ -43,17 +42,49 @@ function haeJson() {
 
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      // function funktiokutsu(viestiObjekti) {     //MIETI TÄMÄ!!!!!
-      // };
       console.log(this.responseText);
-      viestiObjekti = JSON.parse(this.responseText);
+      viestiObjekti = JSON.parse(this.responseText)
     }
   };
-  xmlhttp.open("GET", url, true);
+  xmlhttp.onload = function(){
+     showOld(this.responsetext);
+    }
+  xmlhttp.open("GET", url, false);      // False yrittää pitää huolen siitä, että asiat tapahtuisivat samanaikaisesti
   xmlhttp.send();
-  return xmlhttp.responseText;
 }
 
+function haeJson() {
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://maalampo-some-demo.firebaseio.com/uutiset.json";
+
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // function funktiokutsu(viestiObjekti) {     //MIETI TÃ„MÃ„!!!!!
+      // };
+
+      var viestiObjekti = JSON.parse(this.responseText);
+
+    }
+  };
+  xmlhttp.onload = function(){
+    showOld(this.responseText);
+  }
+  xmlhttp.open("GET", url, false);
+  xmlhttp.send();
+}
+
+function showOld(Json){
+  var y = JSON.parse(Json);
+  for(var i = 0; i < y.length; i++){
+    document.getElementById('moi').innerHTML += y[i].viesti + " ";
+    document.getElementById('moi').innerHTML += y[i].lampo + "<br> ";
+    document.getElementById('moi').innerHTML += y[i].nimi + " ";
+    document.getElementById('moi').innerHTML += y[i].aika + "<br><br>";
+    if (json[i].kommentit !== undefined) {
+      document.getElementById('moi').innerHTML += y[i].kommentit + "<br><br><br>";
+    }
+  }
+}
 
 // Tämä funktio hakee tietyn viesti-olion
 function haeViesti(int, callback) {
@@ -241,14 +272,13 @@ function luoKommenttiOlio(teksti) {
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
-  firebase.database().ref("uutiset/" + viestiOlio.numero - 1).set({
+  firebase.database().ref("uutiset/" + viestiOlio.numero).set({
     kommentit: viestiOlio.kommentit[{
       viesti: kommenttiOlio.viesti,
       nimi: kommenttiOlio.nimi,
       aika: kommenttiOlio.aika,
     }]
   });
-  json = JSON.parse(haeJson());
 }
 
 // ALLA TOISENLAINEN YRITYS VIESTIN JSONIIN LISÄÄMISELLE
