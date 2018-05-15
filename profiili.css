@@ -1,4 +1,16 @@
-.avatar {
-  vertical-align: middle;
-  border-radius: 50%;
+body {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+#kuva {
+  display: block;
+  left: auto;
+  right: auto;
+  width: 50%;
+  padding: 10px;
 }
