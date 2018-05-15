@@ -26,6 +26,8 @@ window.onload = function() {
   document.getElementById("viestiNappula").addEventListener("keyup", function(event) {     //OISKOHAN?
    // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
    event.preventDefault();
+
+
    // Numero 13 vastaa näppäimistön enter-nappia
    if (event.keyCode === 13) {
      // Klikatessa ID:n osoittama button triggeröityy
@@ -54,8 +56,8 @@ function haeJson() {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       function funktiokutsu(viestiObjekti) {
-        
-      }
+
+      };
       console.log(this.responseText);
       viestiObjekti = JSON.parse(this.responseText);
     }
