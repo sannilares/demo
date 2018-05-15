@@ -123,7 +123,7 @@ function viestiJSONiin(viestiOlio) {
 
     //Lisätään viesti firebaseen
     xmlhttp.open("POST", url, true);     // HUOM. Send:iä käyttämällä tulee cross-origin virheilmoitus
-    firebase.database().ref(viestiOlio.numero).set({
+    firebase.database().ref("uutiset/" + viestiOlio.numero).set({
       viesti: viestiOlio.viesti,
       lampo: viestiOlio.lampo,
       nimi: viestiOlio.nimi,
@@ -239,7 +239,7 @@ function luoKommenttiOlio(teksti) {
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
-  firebase.database().ref(viestiOlio.numero).set({
+  firebase.database().ref("uutiset/" + viestiOlio.numero).set({
     kommentit: viestiOlio.kommentit[{
       viesti: kommenttiOlio.viesti,
       nimi: kommenttiOlio.nimi,
