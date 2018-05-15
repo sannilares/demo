@@ -3,7 +3,7 @@ body{
 }
 
 
-/* Kirjautumismoduulin lomake */
+/* Kirjautumisikkunan lomake */
 form {
     border: 3px solid #f1f1f1;
 }
@@ -54,7 +54,6 @@ button:hover {
 /* kuva */
 img.kuva {
     width: 40%;
-    border-radius: 50%;
 }
 
 /* reunukset koko kirjautumissivulle */
@@ -80,8 +79,8 @@ span.salis {
     }
 }
 
-/* moduulin tausta yms säädöt */
-.moduuli {
+/* ikkunan tausta yms säädöt */
+.ikkuna {
     display: none;
     position: fixed;
     z-index: 1;
@@ -91,12 +90,12 @@ span.salis {
     height: 100%;
     overflow: auto;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
     padding-top: 60px;
 }
 
-/* Moduuliboksi */
-.moduulin {
+/* Ikkunaboksi */
+.ikkunan {
     background-color: #fefefe;
     margin: 5px auto;
     border: 1px solid #888;
@@ -119,7 +118,7 @@ span.salis {
     cursor: pointer;
 }
 
-/* animaatioefekti moduulin avautuessa */
+/* animaatioefekti ikkunan avautuessa */
 .animaatio {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
@@ -135,6 +134,6 @@ span.salis {
     to {transform: scale(1)}
 }
 
-.container{
+.container {
   background-color:#f1f1f1
 }

@@ -11,12 +11,12 @@
   <button onclick="document.getElementById('kirjautumissivu').style.display='block'">Kirjaudu sisään</button>
 
   <!-- Kirjautumissivu -->
-  <div id="kirjautumissivu" class="moduuli">
+  <div id="kirjautumissivu" class="ikkuna">
     <span onclick="document.getElementById('kirjautumissivu').style.display='none'"
           class="sulje" title="Sulje moduuli">&times;</span>
 
-    <!-- Kirjautumismoduuli -->
-    <form class="moduulin animaatio" action="demo.index.html" onsubmit="store()">
+    <!-- Kirjautumisikkuna -->
+    <form class="ikkunan animaatio" action="demo.index.html" onsubmit="store()">
       <div class="kuva">
         <img src="login_kuva.png" alt="Kuva" class="kuva">
       </div>
@@ -44,6 +44,8 @@
       </div>
     </form>
   </div>
+
+  <!-- Nimen tallentaminen localStorageen -->
 
   <script type="text/javascript">
       function store() {
