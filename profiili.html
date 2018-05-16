@@ -51,22 +51,27 @@
 
               <div class="setting"><i class="em em-hammer_and_wrench"></i>  Asetukset</div>
 
+              <br>
+
+              <!-- Kirjaudu ulos -> palaa sisäänkirjautumiseen -->
+              <div class="kirjaudu_ulos">
+                <button type="button" class="ulos"
+                        onclick = "location.href='login.html'"
+                        >Kirjaudu ulos</button>
+              </div>
+
+              <br>
+
               <!-- Kutsu kaveri käyttämään palvelua, ei lähetä vielä oikeasti spostia -->
               <form>
-                <label for="kaverii">Kutsu kaveri</label><br>
+                <label for="kaverii" style="font-size:20px;">Kutsu kaveri</label><br>
                  <!-- Placeholder: "Sähköpostiosoite..." katoaa heti kun kenttää klikkaa -->
-                <textarea id="kaverii" placeholder="Sähköpostiosoite"></textarea><br>
+                <textarea id="kaverii" style="text-align:center;" placeholder="Sähköpostiosoite..."></textarea><br>
                  <!-- Parametrina käytetään ylempään kentään syötettyä sähköostiosoitetta -->
                 <button class="kaveri" onclick="kutsuKaveri(document.getElementById(kaverii).value)">Kutsu kaveri</button>
               </form>
             </div>
 
-          <!-- Kirjaudu ulos -> palaa sisäänkirjautumiseen -->
-          <div class="kirjaudu_ulos">
-            <button type="button" class="ulos"
-                    onclick = "location.href='login.html'"
-                    >Kirjaudu ulos</button>
-          </div>
       </div>
     </div>
   </div>
