@@ -57,7 +57,10 @@ function haeJson() {
 function vanhatViestit(Json){
   var y = JSON.parse(Json);
   for(var i = 0; i < y.length; i++){
-    document.getElementById('moi').innerHTML += y[i].viesti + "<br>";
+    document.getElementById('moi').innerHTML += y[i].viesti + "     ";
+    document.getElementById('moi').innerHTML += y[i].lampo + "<br>";
+    document.getElementById('moi').innerHTML += y[i].aika + "<br>";
+    document.getElementById('moi').innerHTML += y[i].nimi + "<br>";
   }
 }
 
