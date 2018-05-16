@@ -3,8 +3,8 @@ window.onload = function() {
   //Tallentaa JSON:in firebasesta muuttujaan json
   var json = JSON.parse(haeJSON());
 
-  // Viestien ja kommenttien näkyvyys firebasessa
-  for (i = 0; i < json.length; i++) {
+  // Viestien ja kommenttien näyttäminen näytöllä firebasesta
+  for (var i = 0; i < json.length; i++) {
     lahetaViesti(luoViestiOlio(json[i].viesti, json[i].lampo, json[i].nimi, json[i].aika, json[i].numero, json[i].kommentit));
     if (json[i].kommentit !== undefined) {
       for (j = 0; j < json[i].kommentit.length; j++) {
@@ -34,8 +34,6 @@ window.onload = function() {
 // Objekti johon viestit haetaan Firebasesta
 var viestiObjekti = "";
 
-var lista = haeJson();
-
 // Tämä funktio hakee viestit
 function haeJson() {
   var xmlhttp = new XMLHttpRequest();
@@ -43,13 +41,11 @@ function haeJson() {
 
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      // function funktiokutsu(viestiObjekti) {     //MIETI TÄMÄ!!!!!
-      // };
       console.log(this.responseText);
       viestiObjekti = JSON.parse(this.responseText);
     }
   };
-  xmlhttp.open("GET", url, true);
+  xmlhttp.open("GET", url, false);   // False pyrkii toteuttamaan asiat samanaikaisesti
   xmlhttp.send();
   return xmlhttp.responseText;
 }
