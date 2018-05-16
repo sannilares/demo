@@ -13,7 +13,7 @@ console.log(json.length);
 viestiObjekti = haeJson();
 
 // Viestien ja kommenttien näyttäminen näytöllä firebasesta
-for (i = 0; i < viestiObjekti.length; i++) {
+for (i = 0; i < 3; i++) {
   lahetaViesti(new viestiOlio(json[i].viesti, json[i].lampo, json[i].nimi, json[i].aika, json[i].numero, json[i].kommentit));
   // if (json[i].kommentit !== undefined) {
   //   for (j = 0; j < json[i].kommentit.length; j++) {
@@ -164,6 +164,7 @@ function viestiJSONiin(viestiOlio) {
   json = JSON.parse(haeJson());
   // xmlhttp.send(viestiOlio);
    viestiObjekti = haeJson();
+   lahetaViesti(viestiOlio);
 }
 
 // Tämä funktio lisää viestin näkyville sivulle, ja luo viestille kommentointi ja lämmön lähetys mahdollisuudet
@@ -266,7 +267,7 @@ document.getElementById("kommenttiId" + viestiOlio.numero).addEventListener("key
 console.log("6. Päästiin funktion loppuun. Hurraa!!");
 
 // Kutsutaan vielä funktiota, jotta uusin viesti saataisiin talteen myös firebasen.
-viestiJSONiin(viestiOlio);
+// viestiJSONiin(viestiOlio);
 }
 
 class kommenttiOlio {
