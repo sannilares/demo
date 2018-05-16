@@ -219,6 +219,7 @@ kommentit.setAttribute("id", "kommenttiId" + viestiOlio.numero);
 
 var kirjoitaKommentti = document.createElement("textarea");
 kirjoitaKommentti.innerHTML.value = "Haluatko kommentoida?";
+kirjoitaKommentti.setAttribute("class", "kirKommentti");
 kirjoitaKommentti.setAttribute("id", "kirjoitaKommenttiId" + viestiOlio.numero);
 kirjoitaKommentti.setAttribute("rows", "4");
 kirjoitaKommentti.setAttribute("cols", "60");

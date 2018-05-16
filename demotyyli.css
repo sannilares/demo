@@ -260,6 +260,7 @@ footer {
   font-family: 'Bellefair', serif;
   font-size: 14px;
   max-width: 20%;
+  margin: 5px;
 }
 
   .kommenttiNappula {
@@ -271,4 +272,8 @@ footer {
     cursor: pointer;
     font-family: 'Bellefair', serif;
     font-size: 14px;
+  }
+
+  .kirKommentti {
+    max-width: 100%;
   }
