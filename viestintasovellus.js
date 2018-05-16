@@ -28,6 +28,8 @@ window.onload = function() {
   //   // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
   //   event.preventDefault();
   // });
+
+  haeJson();
 }
 
 
@@ -45,11 +47,19 @@ function haeJson() {
       viestiObjekti = JSON.parse(this.responseText);
     }
   };
-  xmlhttp.open("GET", url, false);   // False pyrkii toteuttamaan asiat samanaikaisesti
+  xmlhttp.onload = function(){
+   vanhatViestit(this.responseText);
+ }
+  xmlhttp.open("GET", url, true);
   xmlhttp.send();
-  return xmlhttp.responseText;
 }
 
+function vanhatViestit(Json){
+  var y = JSON.parse(Json);
+  for(var i = 0; i < y.length; i++){
+    document.getElementById('moi').innerHTML += y[i].viesti + "<br>";
+  }
+}
 
 // Tämä funktio hakee tietyn viesti-olion
 function haeViesti(int, callback) {
