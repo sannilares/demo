@@ -190,6 +190,9 @@ ajankohta.setAttribute("class", "ajankohta");
 var teks = document.createTextNode(viestiOlio.aika);
 ajankohta.appendChild(teks);
 
+var vali = document.createElement("br");
+ajankohta.appendChild(vali);
+
 var viestiTeksti = document.createElement("p");
 viestiTeksti.setAttribute("class", "viestiTeksti");
 var teksti = document.createTextNode(viestiOlio.viesti);
@@ -230,9 +233,9 @@ kommenttiNappula.setAttribute("onclick", "lahetaKommentti(kommenttiOlio)");
 console.log("2. Kaikki tarvittava on saatu luotua");
 
 // Kun kaikki tarvittava on luotu (ylempänä), on ne nimettävä 'viestin' lapsiksi
-viesti.appendChild(viestiTeksti);
 viesti.appendChild(lahettaja);
 viesti.appendChild(ajankohta);
+viesti.appendChild(viestiTeksti);
 viesti.appendChild(lampo);
 viesti.appendChild(lampoNappula);
 viesti.appendChild(kommentit);
