@@ -106,14 +106,9 @@ function aikaJarjestus(x) {
     }
   };
   //Suoritetaan pluslasku
-  var uusLampo = 1
-  // var uusLampo = {
-  //   if (lampo === null) {
-  //     return 1
-  //   } else {
-  //     return parseInt(lammonMaara.lampo) + 1
-  //   }
-  // };
+  var uusLampo = parseInt(lammonMaara.lampo) + 1
+
+
   //Lisätään lämpö firebaseen
   xmlhttp.open("PUT", url, true);         //POST toiminee myös
   xmlhttp.send(uusLampo.toString());
