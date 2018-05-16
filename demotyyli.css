@@ -204,6 +204,10 @@ footer {
   font-size: 14px;
 }
 
+#viesti {
+  max-width: 95%;
+}
+
 /*etusivun viestien tyyli*/
 .viesti {
   padding: 10px 15px;
