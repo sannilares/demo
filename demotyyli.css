@@ -193,3 +193,8 @@ footer {
   clear: both;
   font-family: 'Bellefair', serif;
 }
+
+/*etusivun viestien tyyli*/
+  .viestiTeksti{
+    font-size: 16px;
+  }
