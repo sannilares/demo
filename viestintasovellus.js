@@ -1,18 +1,19 @@
-var json = "";
-
-// Objekti johon viestit haetaan Firebasesta
+// Muuttujia:
+  // Objekti johon viestit haetaan Firebasesta
 var viestiObjekti = "";
+var json = "";
 
 window.onload = function() {
 document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi");
 console.log("hello world");
 //Tallentaa JSON:in firebasesta muuttujaan json
 json = JSON.parse(haeJson());
-console.log(json);
+console.log(viestiObjekti.length);
+console.log(json.length);
 viestiObjekti = haeJson();
 
 // Viestien ja kommenttien näyttäminen näytöllä firebasesta
-for (i = 0; i < json.length; i++) {
+for (i = 0; i < viestiObjekti.length; i++) {
   lahetaViesti(new viestiOlio(json[i].viesti, json[i].lampo, json[i].nimi, json[i].aika, json[i].numero, json[i].kommentit));
   // if (json[i].kommentit !== undefined) {
   //   for (j = 0; j < json[i].kommentit.length; j++) {
@@ -22,7 +23,7 @@ for (i = 0; i < json.length; i++) {
 }
 
 // Nappuloihin toiminnallisuus:
-document.getElementById("viestiNappula").addEventListener("keyup", function(event) {     //OISKOHAN?
+document.getElementById("viestiNappula").addEventListener("keyup", function(event) {
  // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
  event.preventDefault();
 //  // Numero 13 vastaa näppäimistön enter-nappia
@@ -31,12 +32,12 @@ document.getElementById("viestiNappula").addEventListener("keyup", function(even
 //    document.getElementById("button").click();
 //  }
 });
-document.getElementById("lampoNappula").addEventListener("click", function(event) {
-  // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
-  event.preventDefault();
-  // Ja kutsutaan haluttua funktiota
-  lahetaLampoa();
-});
+// document.getElementById("lampoNappula").addEventListener("click", function(event) {
+//   // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
+//   event.preventDefault();
+//   // Ja kutsutaan haluttua funktiota
+//   lahetaLampoa();
+// });
 // haeJson();
 };
 
@@ -105,7 +106,14 @@ function aikaJarjestus(x) {
     }
   };
   //Suoritetaan pluslasku
-  var uusLampo = parseInt(lammonMaara.lampo) + 1;
+  var uusLampo = 1
+  // var uusLampo = {
+  //   if (lampo === null) {
+  //     return 1
+  //   } else {
+  //     return parseInt(lammonMaara.lampo) + 1
+  //   }
+  // };
   //Lisätään lämpö firebaseen
   xmlhttp.open("PUT", url, true);         //POST toiminee myös
   xmlhttp.send(uusLampo.toString());
@@ -133,7 +141,7 @@ this.lampo = "0";
 this.nimi = localStorage.getItem("etunimi");
 var d = new Date();
 this.aika = d.toLocaleString();
-this.numero = viestiObjekti.length;
+this.numero = viestiObjekti.length;     //TÄÄLLÄ JOTAIN PIELESSÄ!!!!
 this.kommentit = [{}];
 return new viestiOlio(this.viesti, this.lampo, this.nimi, this.aika, this.numero, this.kommentit);
 }
@@ -232,16 +240,19 @@ viesti.appendChild(kirjoitaKommentti);
 viesti.appendChild(kommenttiNappula);
 console.log("3. Kaikki tarvittava on appendattu");
 
+
 // Järjestys ja viestien postaaminen sivulle
 var aa = document.getElementById("viestit");
 console.log("4. Aa-muuttuja on nyt luotu");
 
-if (aa.hasChildNodes()) {
-  aa.insertBefore(viesti, haeViesti(viestiObjekti.length, console.log));
-} else {
-  aa.appendChild(viesti);
-}
-console.log("5. Random if-lausekin saattoi jopa juuri ja juuri toteutua (aa:ta tarvittiin tässä)");
+viestit.appendChild(viesti);
+
+// if (aa.hasChildNodes()) {
+//   aa.insertBefore(viesti, haeViesti(viestiObjekti.length, console.log));
+// } else {
+//   aa.appendChild(viesti);
+// }
+// console.log("5. Random if-lausekin saattoi jopa juuri ja juuri toteutua (aa:ta tarvittiin tässä)");
 
 // Kun käyttäjä painaa nappia, alla oleva tapahtunee
 document.getElementById("kommenttiId" + viestiOlio.numero).addEventListener("keyup", function(event) {
