@@ -195,6 +195,49 @@ footer {
 }
 
 /*etusivun viestien tyyli*/
-  .viestiTeksti{
-    font-size: 16px;
+  .viesti {
+    padding: 10px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 10px;
+    min-width: 96%;
+    margin: 5px;
+  }
+
+  .viestiTeksti {
+    font-size: 20px;
+  }
+
+  .lahettaja {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+  }
+
+  .ajankohta {
+     font-sixe: 14px;
+     font-weight: lighter;
+     float: right;
+     text-align: center;
+  }
+
+  .lampo {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 0px 1px 0px 1px;
+    width: 10px;
+    min-width: 50%
+  }
+
+  .lampoNappula {
+    background-color: #ddc0a1;
+    color: white;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Bellefair', serif;
+    font-size: 14px;
   }

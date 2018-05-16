@@ -152,11 +152,6 @@ function lahetaViesti(viestiOlio) {
   viesti.setAttribute("class", "viesti");
   // viesti.setAttribute("id", viestiOlio.numero);
 
-  var viestiTeksti = document.createElement("p");
-  viestiTeksti.setAttribute("class", "viestiTeksti");
-  var teksti = document.createTextNode(viestiOlio.viesti);
-  viestiTeksti.appendChild(teksti);
-
   var lahettaja = document.createElement("p");
   lahettaja.setAttribute("class", "lahettaja");
   var tekst = document.createTextNode(viestiOlio.nimi);
@@ -166,6 +161,11 @@ function lahetaViesti(viestiOlio) {
   ajankohta.setAttribute("class", "ajankohta");
   var teks = document.createTextNode(viestiOlio.aika);
   ajankohta.appendChild(teks);
+
+  var viestiTeksti = document.createElement("p");
+  viestiTeksti.setAttribute("class", "viestiTeksti");
+  var teksti = document.createTextNode(viestiOlio.viesti);
+  viestiTeksti.appendChild(teksti);
 
   var lampo = document.createElement("p");
   lampo.setAttribute("class", "lampo");
