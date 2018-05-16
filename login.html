@@ -10,7 +10,8 @@
 
 <body>
 <!-- Avaa kirjautumissivun -->
-  <button onclick="document.getElementById('kirjautumissivu').style.display='block'">Kirjaudu sisään</button>
+  <button onclick="document.getElementById('kirjautumissivu').style.display='block'"
+          style="font-size:20px;">Kirjaudu sisään</button>
 
   <!-- Kirjautumissivu -->
   <div id="kirjautumissivu" class="ikkuna">
@@ -25,12 +26,12 @@
 
         <div class="kirjautuminen">
           <label for="käyttis"><b>Käyttäjänimi</b></label>
-          <input id="nimi" type="käyttäjänimi" placeholder="Syötä käyttäjänimesi" name="nimi" required>
+          <input id="nimi" type="käyttäjänimi" style="font-size:18px;" placeholder="Syötä käyttäjänimesi" name="nimi" required>
 
           <label for="salasana"><b>Salasana</b></label>
-          <input type="password" placeholder="Syötä salasanasi" name="password" required>
+          <input type="password" style="font-size:18px;" placeholder="Syötä salasanasi" name="password" required>
 
-          <button type="submit" class="kirjaudu"
+          <button type="submit" class="kirjaudu" style="font-size:20px;"
                   >Kirjaudu sisään</button>
 
           <label>
@@ -46,6 +47,7 @@
       </div>
     </form>
   </div>
+
 
   <!-- Nimen tallentaminen localStorageen -->
 

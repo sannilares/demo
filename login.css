@@ -1,11 +1,14 @@
 body{
   font-family: 'Bellefair', serif;
+  font-size: 20px;
 }
 
 
 /* Kirjautumisikkunan lomake */
 form {
     border: 3px solid #f1f1f1;
+    size: 95%;
+    height: auto;
 }
 
 /* Käyttäjänimen ja salasanan boksit */
@@ -42,6 +45,7 @@ button:hover {
     background-color: #c3c388;
     margin-left: 10px;
     font-family: 'Bellefair', serif;
+    font-size: 20px;
 }
 
 /* sisäänkirjautumiskuvan tyyli */
