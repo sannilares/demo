@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="demotyyli.css">
@@ -26,11 +24,11 @@
 </script>
   <script src="viestintasovellus.js"></script>
 
-<!-- <script>
+<script>
   window.onload = function() {
     document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi")
   }
-</script> -->
+</script>
 </head>
 
 <body>
@@ -51,9 +49,11 @@
     <div class="peittavampiKuultavuus">
       <form>
         <div class="postausTyyli">
-          <label for="viesti"><br>Kirjoita...</label><br>
-          <textarea id="viesti" rows="4" cols="60"></textarea><br>
-          <button type="button" id="viestiNappula" class="nappula" onclick="lahetaViesti(luoViestiOlio(document.getElementById('viesti').value))">Lähetä</button>
+          <label for="viesti" style="font-size:22px; font-weight:bold;"><br>Kirjoita...</label><br>
+              <textarea id="viesti" rows="8" cols="140"></textarea><br>
+              <button type="button" id="viestiNappula" class="nappula"
+                      style="font-size:22px;"
+                      onclick="lahetaViesti(luoViestiOlio(document.getElementById('viesti').value))">Lähetä</button>
           <div class="viestiOlio">
             <div id="viestit" class="viestinOtsikko">
               <h2>Viestit</h2>
@@ -62,8 +62,6 @@
           </div>
         </div>
       </form>
-
-
 
       <!-- <form>
         <div class="viestinTyyli">
