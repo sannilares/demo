@@ -51,9 +51,11 @@
     <div class="peittavampiKuultavuus">
       <form>
         <div class="postausTyyli">
-          <label for="viesti"><br>Kirjoita...</label><br>
-          <textarea id="viesti" rows="4" cols="60"></textarea><br>
-          <button type="button" id="viestiNappula" class="nappula" onclick="lahetaViesti(luoViestiOlio(document.getElementById('viesti').value))">Lähetä</button>
+          <label for="viesti" style="font-size:22px; font-weight:bold;"><br>Kirjoita...</label><br>
+          <textarea id="viesti" rows="8" cols="140"></textarea><br>
+          <button type="button" id="viestiNappula" class="nappula"
+                  style="font-size:22px;"
+                  onclick="lahetaViesti(luoViestiOlio(document.getElementById('viesti').value))">Lähetä</button>
           <div class="viestiOlio">
             <div id="viestit" class="viestinOtsikko">
               <h2>Viestit</h2>
