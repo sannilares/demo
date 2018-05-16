@@ -4,11 +4,11 @@ var json = "";
 var viestiObjekti = "";
 
 window.onload = function() {
-document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi")
+document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi");
 console.log("hello world");
 //Tallentaa JSON:in firebasesta muuttujaan json
 json = JSON.parse(haeJson());
-console.log(json)
+console.log(json);
 viestiObjekti = haeJson();
 
 // Viestien ja kommenttien näyttäminen näytöllä firebasesta
@@ -21,22 +21,22 @@ for (i = 0; i < json.length; i++) {
   // }
 }
 
-
 // Nappuloihin toiminnallisuus:
 document.getElementById("viestiNappula").addEventListener("keyup", function(event) {     //OISKOHAN?
  // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
  event.preventDefault();
- // Numero 13 vastaa näppäimistön enter-nappia
- if (event.keyCode === 13) {
-   // Klikatessa ID:n osoittama button triggeröityy
-   document.getElementById("button").click();
- }
+//  // Numero 13 vastaa näppäimistön enter-nappia
+//  if (event.keyCode === 13) {
+//    // Klikatessa ID:n osoittama button triggeröityy
+//    document.getElementById("button").click();
+//  }
 });
-// document.getElementById("nextbutton").addEventListener("click", function(event) {
-//   // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
-//   event.preventDefault();
-// });
-
+document.getElementById("lampoNappula").addEventListener("click", function(event) {
+  // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
+  event.preventDefault();
+  // Ja kutsutaan haluttua funktiota
+  lahetaLampoa();
+});
 // haeJson();
 };
 
@@ -278,12 +278,11 @@ return {viesti, nimi, aika};
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
-firebase.database().ref(viestiOlio.numero).set({
-  kommentit: viestiOlio.kommentit[{
+  var tarkasta = check(viestiOlio.numero);
+firebase.database().ref(viestiOlio.numero).child("kommentit").child(tarkasta).set({
     viesti: kommenttiOlio.viesti,
     nimi: kommenttiOlio.nimi,
     aika: kommenttiOlio.aika,
-  }]
 });
 json = JSON.parse(haeJson());
 }
