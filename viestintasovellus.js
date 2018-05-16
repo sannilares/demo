@@ -259,6 +259,14 @@ console.log("6. Päästiin funktion loppuun. Hurraa!!");
 viestiJSONiin(viestiOlio);
 }
 
+class kommenttiOlio {
+  constructor(viesti, nimi, aika) {
+    this.viesti = viesti;
+    this.nimi = nimi;
+    this.aika = aika;
+  }
+}
+
 // Funktio luo kommenttiOlion
 function luoKommenttiOlio(teksti) {
 this.viesti = teksti;

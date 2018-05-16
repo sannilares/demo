@@ -1,5 +1,5 @@
 [
 {"viesti":"Moi", "lampo": "0", "nimi":"Sanni", "aika":"2018.03.05.12.43", "numero": 0, "kommentit":[{"viesti": "Joojoo", "nimi": "Sini", "aika": "15.38.3.3.2018"}]},
-{"viesti":"No hei", "lampo": "0", "nimi":"Sini", "aika":"2018.11.05.10.43", "numero": 1, "kommentit":[{}]},
-{"viesti":"Öööö..?", "lampo": "0", "nimi":"Teemu Teekkari", "aika":"2018.08.17.12.20", "numero": 2, "kommentit":[{}]}
+{"viesti":"No hei", "lampo": "0", "nimi":"Sini", "aika":"2018.11.05.10.43", "numero": 1, "kommentit":[]},
+{"viesti":"Öööö..?", "lampo": "0", "nimi":"Teemu Teekkari", "aika":"2018.08.17.12.20", "numero": 2, "kommentit":[]}
 ]
