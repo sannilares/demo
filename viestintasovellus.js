@@ -179,9 +179,10 @@ function lahetaViesti(viestiOlio) {
 
   var lampoNappula = document.createElement("button");
   lampoNappula.setAttribute("class", "lampoNappula");
-  lampoNappula.setAttribute("onClick", "lahetaLampoa(viestiOlio.numero)");
+  lampoNappula.setAttribute("type", "button");
+  lampoNappula.setAttribute("onclick", "lahetaLampoa(" + "viestiOlio.numero" + ")");
   lampoNappula.innerHTML = "Lähetä lämpöä!";
-  //lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
+  lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
 
   var kommentit = document.createElement("div");
   kommentit.setAttribute("class", "kommentit");
@@ -199,8 +200,9 @@ function lahetaViesti(viestiOlio) {
   kommenttiNappula.innerHTML = "Kommentoi";
   kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
   kommenttiNappula.setAttribute("class", "kommenttiNappula");
+  kommenttiNappula.setAttribute("type", "button");
   var kommenttiOlio = luoKommenttiOlio(document.getElementById("kirjoitaKommenttiId" + viestiOlio.numero), localStorage.getItem("etunimi"))
-  kommenttiNappula.setAttribute("onClick", "lahetaKommentti(kommenttiOlio)");
+  kommenttiNappula.setAttribute("onclick", "lahetaKommentti(kommenttiOlio)");
   console.log("2. Kaikki tarvittava on saatu luotua")
 
   // Kun kaikki tarvittava on luotu (ylempänä), on ne nimettävä 'viestin' lapsiksi
