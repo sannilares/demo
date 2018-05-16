@@ -29,7 +29,7 @@ window.onload = function() {
   //   event.preventDefault();
   // });
 
-  haeJson();
+  // haeJson();
 }
 
 
@@ -47,22 +47,23 @@ function haeJson() {
       viestiObjekti = JSON.parse(this.responseText);
     }
   };
-  xmlhttp.onload = function(){
-   vanhatViestit(this.responseText);
- }
-  xmlhttp.open("GET", url, true);
+ //  xmlhttp.onload = function(){
+ //   vanhatViestit(this.responseText);
+ // }
+  xmlhttp.open("GET", url, false);
   xmlhttp.send();
+  return this.responseText;
 }
 
-function vanhatViestit(Json){
-  var y = JSON.parse(Json);
-  for(var i = 0; i < y.length; i++){
-    document.getElementById('moi').innerHTML += y[i].viesti + "     ";
-    document.getElementById('moi').innerHTML += y[i].lampo + "<br>";
-    document.getElementById('moi').innerHTML += y[i].aika + "<br>";
-    document.getElementById('moi').innerHTML += y[i].nimi + "<br>";
-  }
-}
+// function vanhatViestit(Json){
+//   var y = JSON.parse(Json);
+//   for(var i = 0; i < y.length; i++){
+//     document.getElementById('moi').innerHTML += y[i].viesti + "     ";
+//     document.getElementById('moi').innerHTML += y[i].lampo + "<br>";
+//     document.getElementById('moi').innerHTML += y[i].aika + "<br>";
+//     document.getElementById('moi').innerHTML += y[i].nimi + "<br>";
+//   }
+// }
 
 // Tämä funktio hakee tietyn viesti-olion
 function haeViesti(int, callback) {
@@ -197,6 +198,7 @@ function lahetaViesti(viestiOlio) {
   var kommenttiNappula = document.createElement("button");
   kommenttiNappula.innerHTML = "Kommentoi";
   kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
+  kommenttiNappula.setAttribute("class", "kommenttiNappula");
   var kommenttiOlio = luoKommenttiOlio(document.getElementById("kirjoitaKommenttiId" + viestiOlio.numero), localStorage.getItem("etunimi"))
   kommenttiNappula.setAttribute("onClick", "lahetaKommentti(kommenttiOlio)");
   console.log("2. Kaikki tarvittava on saatu luotua")
