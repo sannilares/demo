@@ -269,6 +269,7 @@ footer {
   @media only screen and (max-width: 600px) {
     .peittavampiKuultavuus {
       width: 100%;
+      left: 0%;
       margin: 0px;
     }
     .postausTyyli {
