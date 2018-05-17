@@ -72,8 +72,8 @@ span.salis {
     padding-right: 10px;
 }
 
-/* pienten ruutujen säädöt */
-@media screen and (max-width: 300px) {
+/* mobiilisäädöt */
+@media screen and (max-width: 600px) {
     span.salis {
         display: block;
         float: none;

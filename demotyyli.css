@@ -19,9 +19,6 @@
 .kuultavuus {
   height: 780px;
   background:rgba(255,255,255,0.6);
-  /* text-align: center;
-  padding: 50px 80px;
-  text-align: justify; */
   font-size: 18px;
 }
 
@@ -69,31 +66,21 @@ form {
   border-radius: 5px;
   font-size: 16px;
   padding: 60px;
-  /* width: 81%; */
   margin: 24px;
   font-family: 'Bellefair', serif;
 }
 
 .postausTyyli {
-  /* background-color: white;
-  opacity: 0.9; */
   font-family: 'Bellefair', serif;
   padding: 10px;
   font-size: 17px;
 }
 
 .viestinTyyli {
-  /* background-color: white;
-  opacity: 0.9; */
   font-family: 'Bellefair', serif;
   padding-left: 5px;
   padding: 10px;
   font-size: 17px;
-  /* Rollaus-efekti */
-  /* overflow: auto;
-  height: 150px;
-  display: block;
-  padding-right: 4px; */
 }
 
 .kommentinTyyli {
@@ -111,8 +98,6 @@ form {
   padding: 15px;
   background-color: #ddc0a1;
   text-align: center;
-  /* position: fixed;
-  top: 0; */
   width: 97.6%;
   z-index: 10;
 }
@@ -157,7 +142,7 @@ form {
 
 /* navin responsiivisuus */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .topnav a:not(:first-child){
     display: none;
   }
@@ -167,7 +152,7 @@ form {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .topnav.responsive {
     position: relative;
   }
@@ -263,6 +248,8 @@ footer {
   margin: 5px;
 }
 
+/*kommenttien tyyli */
+
   .kommenttiNappula {
     display: block;
     background-color: #ddc0a1;
@@ -276,4 +263,16 @@ footer {
 
   .kirKommentti {
     max-width: 100%;
+  }
+
+  /* mobiili näkymä*/
+  @media only screen and (max-width: 600px) {
+    .peittavampiKuultavuus {
+      width: 100%;
+      margin: 0px;
+    }
+    .postausTyyli {
+      width: 80%;
+      padding: 5px;
+    }
   }
