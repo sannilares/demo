@@ -8,13 +8,7 @@ function listaaViestit() {
   database.ref().orderByChild('numero').on('value', snapshot => {
     while (viestit.firstChild) { viestit.removeChild(viestit.firstChild); };
     snapshot.forEach(child => {
-      if (child.hasChild('kommentit')) {
         lahetaViesti(new viestiOlio(child.val().viesti, child.val().lampo, child.val().nimi, child.val().aika, child.val().numero));
-      } else {
-        lahetaViesti(new viestiOlio(child.val().viesti, child.val().lampo, child.val().nimi, child.val().aika, child.val().numero));
-      }
-
-
     });
   });
 }
@@ -32,11 +26,11 @@ json = JSON.parse(haeJson());
 document.getElementById("viestiNappula").addEventListener("keyup", function(event) {
  // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
  event.preventDefault();
-//  // Numero 13 vastaa näppäimistön enter-nappia
-//  if (event.keyCode === 13) {
-//    // Klikatessa ID:n osoittama button triggeröityy
-//    document.getElementById("button").click();
-//  }
+ // Numero 13 vastaa näppäimistön enter-nappia
+ if (event.keyCode === 13) {
+   // Klikatessa ID:n osoittama button triggeröityy
+   document.getElementById("viestiNappula").click();
+ }
 });
 };
 
@@ -86,7 +80,6 @@ function aikaJarjestus(x) {
   //Suoritetaan pluslasku
   var uusLampo = parseInt(lammonMaara.lampo) + 1
 
-
   //Lisätään lämpö firebaseen
   xmlhttp.open("PUT", url, true);         //POST toiminee myös
   xmlhttp.send(uusLampo.toString());
@@ -95,6 +88,8 @@ function aikaJarjestus(x) {
   haeViesti(int, aikaJarjestus);
 }
 
+
+// Mööritellään viestiOlio
 class viestiOlio {
   constructor(viesti, lampo, nimi, aika, numero) {
     this.viesti = viesti;
@@ -105,7 +100,7 @@ class viestiOlio {
   }
 }
 
-
+// Luodaan viestiOlio
 function luoViestiOlio(teksti) {
 this.viesti = teksti;
 this.lampo = "0";
@@ -117,7 +112,7 @@ return new viestiOlio(this.viesti, this.lampo, this.nimi, this.aika, this.numero
 }
 
 
-// Tämä funktio lisää uuden viestiolion firebaseen
+// Tämä funktio lisää uuden viestiolion firebaseen käyttäen firebasen omia metodeita
 function viestiJSONiin(viestiOlio) {
 
   firebase.database().ref(viestiOlio.numero).set({
@@ -137,32 +132,31 @@ function lahetaViesti(viestiOlio) {
 // Luodaan tarvittavat tekstit, kentät ja nappulat:
 var viesti = document.createElement("div");
 viesti.setAttribute("class", "viesti");
-// viesti.setAttribute("id", viestiOlio.numero);
 
 var lahettaja = document.createElement("p");
 lahettaja.setAttribute("class", "lahettaja");
-var tekst = document.createTextNode(viestiOlio.nimi);
-lahettaja.appendChild(tekst);
+var teksti = document.createTextNode(viestiOlio.nimi);
+lahettaja.appendChild(teksti);
 
 var ajankohta = document.createElement("p");
 ajankohta.setAttribute("class", "ajankohta");
-var teks = document.createTextNode(viestiOlio.aika);
-ajankohta.appendChild(teks);
+var tekst = document.createTextNode(viestiOlio.aika);
+ajankohta.appendChild(tekst);
 
 var vali = document.createElement("br");
 ajankohta.appendChild(vali);
 
 var viestiTeksti = document.createElement("p");
 viestiTeksti.setAttribute("class", "viestiTeksti");
-var teksti = document.createTextNode(viestiOlio.viesti);
-viestiTeksti.appendChild(teksti);
+var teks = document.createTextNode(viestiOlio.viesti);
+viestiTeksti.appendChild(teks);
 
 var lampo = document.createElement("p");
 lampo.setAttribute("class", "lampo");
 var tek = document.createTextNode(viestiOlio.lampo);
 lampo.appendChild(tek);
-  //lampo.setAttribute("id", "lampoId" + viestiOlio.numero);
 
+// Lähetä lämpöä - nappula toiminnalisuuksineen
 var lampoNappula = document.createElement("button");
 lampoNappula.setAttribute("class", "lampoNappula");
 lampoNappula.setAttribute("type", "button");
@@ -170,6 +164,7 @@ lampoNappula.setAttribute("onclick", "lahetaLampoa(" + viestiOlio.numero + ")");
 lampoNappula.innerHTML = "Lähetä lämpöä!";
 lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
 
+// Kommentit näkyville
 var kommentit = document.createElement("div");
 kommentit.setAttribute("class", "kommentit");
 
@@ -185,6 +180,7 @@ database.ref(viestiOlio.numero).child('kommentit').once('value', snapshot => {
 });
 kommentit.setAttribute("id", "kommenttiId" + viestiOlio.numero);
 
+// Tekstikenttä kommenttien kirjoittamiselle
 var kirjoitaKommentti = document.createElement("textarea");
 kirjoitaKommentti.innerHTML.value = "Haluatko kommentoida?";
 kirjoitaKommentti.setAttribute("class", "kirKommentti");
@@ -192,6 +188,7 @@ kirjoitaKommentti.setAttribute("id", "kirjoitaKommenttiId" + viestiOlio.numero);
 kirjoitaKommentti.setAttribute("rows", "4");
 kirjoitaKommentti.setAttribute("cols", "60");
 
+// Nappula kommenttien lähettämiselle toiminnallisuuksineen
 var kommenttiNappula = document.createElement("button");
 kommenttiNappula.innerHTML = "Kommentoi";
 kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
@@ -212,6 +209,7 @@ viesti.appendChild(kommenttiNappula);
 // Järjestys ja viestien postaaminen sivulle
 var aa = document.getElementById("viestit");
 
+// Uusin viesti näkyköön ensimmäisenä
 viestit.prepend(viesti);
 
 // Kun käyttäjä painaa nappia, alla oleva tapahtunee
@@ -245,9 +243,9 @@ this.aika = d.toLocaleString();
 return new kommenttiOlio(this.viesti, this.nimi, this.aika);
 }
 
-// Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin (parametrinä)
+// Funktio ottaa parametrikseen kommentin tekstiin viittaavan id:n, luo sillä kommenttiolion ja lisää sen tekstin vamlmiiseen viestiin (parametrinä)
 function lahetaKommentti(kommentinSisalto, viestiOlio) {
-  // var tarkasta = firebase.database.check(viestiOlio.numero);
+
  var kommentinSisalto = document.getElementById(kommentinSisalto);
  var kommenttiOlio = luoKommenttiOlio(kommentinSisalto.value);
 
