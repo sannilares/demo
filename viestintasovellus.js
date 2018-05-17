@@ -1,5 +1,4 @@
 // Muuttujia:
-var viestiObjekti = "";
 var json = "";
 var database = firebase.database();
 
@@ -9,8 +8,13 @@ function listaaViestit() {
   database.ref().orderByChild('numero').on('value', snapshot => {
     while (viestit.firstChild) { viestit.removeChild(viestit.firstChild); };
     snapshot.forEach(child => {
-      console.log("moi");
-      lahetaViesti(new viestiOlio(child.val().viesti, child.val().lampo, child.val().nimi, child.val().aika, child.val().numero, child.val().kommentit));
+      if (child.hasChild('kommentit')) {
+        lahetaViesti(new viestiOlio(child.val().viesti, child.val().lampo, child.val().nimi, child.val().aika, child.val().numero));
+      } else {
+        lahetaViesti(new viestiOlio(child.val().viesti, child.val().lampo, child.val().nimi, child.val().aika, child.val().numero));
+      }
+
+
     });
   });
 }
@@ -23,9 +27,6 @@ console.log("hello world");
 listaaViestit();
 //Tallentaa JSON:in firebasesta muuttujaan json, Objekti
 json = JSON.parse(haeJson());
-
-// // Merkkijono JSON:ista
-viestiObjekti = haeJson();
 
 // Nappuloihin toiminnallisuus:
 document.getElementById("viestiNappula").addEventListener("keyup", function(event) {
@@ -61,7 +62,6 @@ xmlhttp.onreadystatechange = function() {
     //Odotetaan että saadaan tiedot firebasesta
     callback(this.responseText);
     console.log(this.responseText);
-    //viestiObjekti = JSON.parse(this.responseText);
   }
 };
 xmlhttp.open("GET", url, true);
@@ -81,7 +81,6 @@ function aikaJarjestus(x) {
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.responseText);
-      //viestiObjekti = JSON.parse(this.responseText);
     }
   };
   //Suoritetaan pluslasku
@@ -91,20 +90,18 @@ function aikaJarjestus(x) {
   //Lisätään lämpö firebaseen
   xmlhttp.open("PUT", url, true);         //POST toiminee myös
   xmlhttp.send(uusLampo.toString());
-  viestiObjekti = haeJson();
   }
   // Haetaan JSON:ista parametrin osoittama viesti ja käynnistetään funktio
   haeViesti(int, aikaJarjestus);
 }
 
 class viestiOlio {
-  constructor(viesti, lampo, nimi, aika, numero, kommentit) {
+  constructor(viesti, lampo, nimi, aika, numero) {
     this.viesti = viesti;
     this.lampo = lampo;
     this.nimi = nimi;
     this.aika = aika;
     this.numero = numero;
-    this.kommentit = kommentit;
   }
 }
 
@@ -115,9 +112,8 @@ this.lampo = "0";
 this.nimi = localStorage.getItem("etunimi");
 var d = new Date();
 this.aika = d.toLocaleString();
-this.numero = (new Date()).getTime();     //TÄÄLLÄ JOTAIN PIELESSÄ!!!!
-this.kommentit = [];      // Tyhjä array ei tarvitse kaarisulkeita
-return new viestiOlio(this.viesti, this.lampo, this.nimi, this.aika, this.numero, this.kommentit);
+this.numero = (new Date()).getTime();
+return new viestiOlio(this.viesti, this.lampo, this.nimi, this.aika, this.numero);
 }
 
 
@@ -133,9 +129,6 @@ function viestiJSONiin(viestiOlio) {
     kommentit: viestiOlio.kommentit
   });
   json = JSON.parse(haeJson());
-  // xmlhttp.send(viestiOlio);
-   viestiObjekti = haeJson();
-   // lahetaViesti(viestiOlio);
 }
 
 
@@ -180,8 +173,17 @@ lampoNappula.setAttribute("id", "lamponappulaId" + viestiOlio.numero);
 
 var kommentit = document.createElement("div");
 kommentit.setAttribute("class", "kommentit");
-// var te = document.createTextNode(viestiOlio.kommentit);
-// kommentit.appendChild(te);
+
+database.ref(viestiOlio.numero).child('kommentit').once('value', snapshot => {
+  if (snapshot.exists()) {
+    snapshot.forEach(child => {
+      var p = document.createElement("p");
+      var te = document.createTextNode(child.val().viesti);
+      p.appendChild(te);
+      kommentit.appendChild(p);
+    })
+  }
+});
 kommentit.setAttribute("id", "kommenttiId" + viestiOlio.numero);
 
 var kirjoitaKommentti = document.createElement("textarea");
@@ -196,8 +198,7 @@ kommenttiNappula.innerHTML = "Kommentoi";
 kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
 kommenttiNappula.setAttribute("class", "kommenttiNappula");
 kommenttiNappula.setAttribute("type", "button");
-var kommenttiOlio = luoKommenttiOlio(document.getElementById("kirjoitaKommenttiId" + viestiOlio.numero));
-kommenttiNappula.setAttribute("onclick", "lahetaKommentti(" + kommenttiOlio + ", " + viestiOlio + ")");
+kommenttiNappula.onclick = function() { lahetaKommentti("kirjoitaKommenttiId" + viestiOlio.numero, viestiOlio) };
 
 // Kun kaikki tarvittava on luotu (ylempänä), on ne nimettävä 'viestin' lapsiksi
 viesti.appendChild(lahettaja);
@@ -242,16 +243,15 @@ this.viesti = teksti;
 this.nimi = localStorage.getItem("etunimi");
 var d = new Date();
 this.aika = d.toLocaleString();
-return {viesti, nimi, aika};
+return new kommenttiOlio(this.viesti, this.nimi, this.aika);
 }
 
 // Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin (parametrinä)
-function lahetaKommentti(kommenttiOlio, viestiOlio) {
-  var tarkasta = check(viestiOlio.numero);
-firebase.database().ref(viestiOlio.numero).child("kommentit").child(tarkasta).set({
-    viesti: kommenttiOlio.viesti,
-    nimi: kommenttiOlio.nimi,
-    aika: kommenttiOlio.aika,
-});
+function lahetaKommentti(kommentinSisalto, viestiOlio) {
+  // var tarkasta = firebase.database.check(viestiOlio.numero);
+ var kommentinSisalto = document.getElementById(kommentinSisalto);
+ var kommenttiOlio = luoKommenttiOlio(kommentinSisalto.value);
+
+ firebase.database().ref(viestiOlio.numero).child('kommentit').push(kommenttiOlio);
 json = JSON.parse(haeJson());
 }
