@@ -173,7 +173,11 @@ database.ref(viestiOlio.numero).child('kommentit').once('value', snapshot => {
     snapshot.forEach(child => {
       var p = document.createElement("p");
       var te = document.createTextNode(child.val().viesti);
+      var tee = document.createTextNode(" ~");
+      var teee = document.createTextNode(child.val().nimi);
       p.appendChild(te);
+      p.appendChild(tee);
+      p.appendChild(teee);
       kommentit.appendChild(p);
     })
   }
