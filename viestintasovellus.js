@@ -125,8 +125,7 @@ function viestiJSONiin(viestiOlio) {
     lampo: viestiOlio.lampo,
     nimi: viestiOlio.nimi,
     aika: viestiOlio.aika,
-    numero: viestiOlio.numero,
-    kommentit: viestiOlio.kommentit
+    numero: viestiOlio.numero
   });
   json = JSON.parse(haeJson());
 }
