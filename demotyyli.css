@@ -267,12 +267,22 @@ footer {
 
   /* mobiili näkymä*/
   @media only screen and (max-width: 600px) {
+    textarea {
+      width: 80%;
+    }
     .peittavampiKuultavuus.responsive {
       width: 100%;
       left: 0%;
       margin: 0px;
     }
     #viesti {
+      width: 100px;
+      min-width: 80%;
+    }
+    .viesti {
+      padding: 0px;
+      margin: 0px;
+      width: 300px;
       min-width: 80%;
     }
   }
