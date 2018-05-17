@@ -266,23 +266,28 @@ footer {
   }
 
   /* mobiili näkymä*/
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 790px) {
     textarea {
       width: 80%;
     }
-    .peittavampiKuultavuus.responsive {
+    form {
+      padding: 0px;
+    }
+    .peittavampiKuultavuus {
       width: 100%;
-      left: 0%;
+      left: 0;
       margin: 0px;
+      padding: 0px;
     }
     #viesti {
       width: 100px;
       min-width: 80%;
     }
     .viesti {
-      padding: 0px;
+      padding: 5px;
       margin: 0px;
       width: 300px;
       min-width: 80%;
+      left: 0;
     }
   }
