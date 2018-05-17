@@ -272,4 +272,7 @@ footer {
       left: 0%;
       margin: 0px;
     }
+    #viesti {
+      min-width: 80%;
+    }
   }
