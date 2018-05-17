@@ -267,7 +267,7 @@ footer {
 
   /* mobiili näkymä*/
   @media only screen and (max-width: 600px) {
-    .peittavampiKuultavuus {
+    .peittavampiKuultavuus.responsive {
       width: 100%;
       left: 0%;
       margin: 0px;

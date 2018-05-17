@@ -41,7 +41,7 @@
           <i class="fa fa-bars" style="font-size: 16px;"></i>
         </a>
     </div>
-    <div class="peittavampiKuultavuus">
+    <div class="peittavampiKuultavuus" id="peittavampi">
       <form>
         <div class="postausTyyli">
           <label for="viesti" style="font-size:22px; font-weight:bold;"><br>Kirjoita...</label><br>
@@ -95,7 +95,7 @@ function stickyFunction() {
   } else {
     navbar.classList.remove("sticky");
   }
-}
+  }
 
 // Responsiivisuus mobiilille
 function resFunction() {
@@ -105,7 +105,13 @@ function resFunction() {
     } else {
         x.className = "topnav";
     }
-}
+    var y = document.getElementById("peittavampi");
+    if(y.className === "peittavampiKuultavuus") {
+      y.className += " responsive";
+    } else {
+      y.className = "peittavampiKuultavuus"
+    }
+  }
 </script>
 </body>
 </html>
