@@ -225,7 +225,7 @@ footer {
    font-sixe: 14px;
    font-weight: lighter;
    float: right;
-   margin-left: 40%
+   margin-left: 10px;
 }
 
 .lampo {
@@ -266,7 +266,7 @@ footer {
   }
 
   /* mobiili näkymä*/
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 620px) {
     textarea {
       width: 80%;
     }
