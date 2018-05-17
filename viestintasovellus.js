@@ -3,7 +3,7 @@ var viestiObjekti = "";
 var json = "";
 var database = firebase.database();
 
-
+// funktio päivittää viestit näkyviin sivulle.
 function listaaViestit() {
   var viestit = document.getElementById('viestit');
   database.ref().orderByChild('numero').on('value', snapshot => {
@@ -18,7 +18,6 @@ function listaaViestit() {
 
 window.onload = function() {
 
-
 document.getElementById("testi").innerHTML = "Hello, " + localStorage.getItem("etunimi");
 console.log("hello world");
 listaaViestit();
@@ -27,8 +26,6 @@ json = JSON.parse(haeJson());
 
 // // Merkkijono JSON:ista
 viestiObjekti = haeJson();
-
-
 
 // Nappuloihin toiminnallisuus:
 document.getElementById("viestiNappula").addEventListener("keyup", function(event) {
@@ -40,12 +37,6 @@ document.getElementById("viestiNappula").addEventListener("keyup", function(even
 //    document.getElementById("button").click();
 //  }
 });
-// document.getElementById("lampoNappula").addEventListener("click", function(event) {
-//   // Peruutetaan mahdollinen "defaultAction", jos sen perumiselle tulee tarve
-//   event.preventDefault();
-//   // Ja kutsutaan haluttua funktiota
-//   lahetaLampoa();
-// });
 };
 
 
@@ -205,8 +196,8 @@ kommenttiNappula.innerHTML = "Kommentoi";
 kommenttiNappula.setAttribute("id", "kommenttinappulaId" + viestiOlio.numero);
 kommenttiNappula.setAttribute("class", "kommenttiNappula");
 kommenttiNappula.setAttribute("type", "button");
-var kommenttiOlio = luoKommenttiOlio(document.getElementById("kirjoitaKommenttiId" + viestiOlio.numero), localStorage.getItem("etunimi"));
-kommenttiNappula.setAttribute("onclick", "lahetaKommentti(kommenttiOlio)");
+var kommenttiOlio = luoKommenttiOlio(document.getElementById("kirjoitaKommenttiId" + viestiOlio.numero));
+kommenttiNappula.setAttribute("onclick", "lahetaKommentti(" + kommenttiOlio + ", " + viestiOlio + ")");
 
 // Kun kaikki tarvittava on luotu (ylempänä), on ne nimettävä 'viestin' lapsiksi
 viesti.appendChild(lahettaja);
@@ -236,6 +227,7 @@ document.getElementById("kommenttiId" + viestiOlio.numero).addEventListener("key
   document.getElementById('viesti').value = "";
 }
 
+// Luokka kommenttioliolle
 class kommenttiOlio {
   constructor(viesti, nimi, aika) {
     this.viesti = viesti;
@@ -253,7 +245,7 @@ this.aika = d.toLocaleString();
 return {viesti, nimi, aika};
 }
 
-// Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin
+// Funktio ottaa parametrikseen ylempänä luodun kommenttiOlion, ja lisää sen vamlmiiseen viestiin (parametrinä)
 function lahetaKommentti(kommenttiOlio, viestiOlio) {
   var tarkasta = check(viestiOlio.numero);
 firebase.database().ref(viestiOlio.numero).child("kommentit").child(tarkasta).set({
